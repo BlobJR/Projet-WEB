@@ -5,10 +5,10 @@ function valid(){
     var msgmdp=document.getElementById("mdpmsg");
     if(mdp==="" || mail===""){
         if(mdp===""){
-            msgmdp.textContent="Le champ mot de passe ne peut être vide chef"
+            msgmdp.textContent="Ce champ doit être rempli"
         }
         if(mail===""){
-            msgemail.textContent="Le champ email ne peut être vide chef"
+            msgemail.textContent="Ce champ doit être rempli"
         }
     }else {
         window.location.href = 'https://www.javatpoint.com/ethical-hacking-environment-setup';
@@ -17,13 +17,15 @@ function valid(){
 function validemail(input){
     var emailPattern = /^[^\s@]+@[^\s@]+\.(com|fr)$/;
     var msgemail=document.getElementById("emailmsg");
-    if (emailPattern.test(input.value)) {
+    if (input.value.trim() === "") {
+        // Champ d'entrée vide, ne rien faire
+        msgemail.textContent = "";
+    } else if (emailPattern.test(input.value)) {
         // Email valide
         msgemail.textContent = "";
     } else {
-        
+        // Adresse email invalide
         msgemail.textContent = "Adresse email invalide";
-      
     }
 }
 

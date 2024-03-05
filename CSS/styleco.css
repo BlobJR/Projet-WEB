@@ -39,35 +39,43 @@ body{
   height: 80vh;
   justify-content: center; 
   align-items: center; 
-  text-align: center  ;
-  background: #e0e0e0;
+  text-align: center;
+background: #e0e0e0;
 box-shadow: inset 39px 39px 78px #b8b8b8,
-            inset -39px -39px 78px #ffffff;
+          inset -39px -39px 78px #ffffff;
+  flex-direction: column;
 
 
 }
+
 .header2 input{
   display:flex;
-  position:relative;
+  flex-direction: column;
   width: 15vw;
   height:3vh ;
   justify-content: center;
   align-items: center;
   text-align: center;
-  margin: 4vh 0vh;
+  margin: auto;
+  margin-bottom: 4vh;
   padding:2vh;
-  right: -1vw;
   border-radius: 35px;
   border-style: solid;
   border-color: #131213;
   background-color: #131213;
   color: white; 
   font-weight: bold; 
+  border-radius: 71px;
+  position: relative;
   
-  
- 
 }
-
+.header2 span {
+  display: flex;
+  position: absolute;
+  margin-left: 40vw;
+  font-size: 1vw;
+ 
+ }
 .connexion{
   display: flex;
   position:relative;
@@ -81,14 +89,9 @@ box-shadow: inset 39px 39px 78px #b8b8b8,
   
 }
 .btn-53,
-.btn-53 *,
-.btn-53 :after,
-.btn-53 :before,
-.btn-53:after,
-.btn-53:before {
-  border: 0 solid;
-  box-sizing: border-box;
-}
+
+
+
 
 .btn-53 {
   
@@ -99,90 +102,18 @@ box-shadow: inset 39px 39px 78px #b8b8b8,
     Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif,
     Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
   font-size: 100%;
-  margin: 0;
- 
-  padding: 0;
-}
-
-
-.btn-53 {
+  margin-top: 10vh;
   border: 1px solid;
   border-radius: 999px;
   box-sizing: border-box;
   display: block;
-  width: 20vw;
   font-weight: 900;
   overflow: hidden;
-  right:0vw;
-  bottom: -10vh;
-  padding: 1.2rem 3rem;
-  position: relative;
+  width: 15vw;
+  height: 7vh;
   text-transform: uppercase;
+  padding: 0;
 }
-
-.btn-53 .original {
-  background: #fff;
-  color: #000;
-  display: grid;
-  inset: 0;
-  place-content: center;
-  ;
-  position: absolute;
-  transition: transform 0.2s cubic-bezier(0.87, 0, 0.13, 1);
-}
-
-.btn-53:hover .original {
-  transform: translateY(100%);
-}
-
-.btn-53 .letters {
-  display: inline-flex;
-}
-
-.btn-53 span {
-  opacity: 0;
-  transform: translateY(-15px);
-  transition: transform 0.2s cubic-bezier(0.87, 0, 0.13, 1), opacity 0.2s;
-}
-
-.btn-53 span:nth-child(2n) {
-  transform: translateY(15px);
-}
-
-.btn-53:hover span {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.btn-53:hover span:nth-child(2) {
-  transition-delay: 0.1s;
-}
-
-.btn-53:hover span:nth-child(3) {
-  transition-delay: 0.2s;
-}
-
-.btn-53:hover span:nth-child(4) {
-  transition-delay: 0.3s;
-}
-
-.btn-53:hover span:nth-child(5) {
-  transition-delay: 0.4s;
-}
-
-.btn-53:hover span:nth-child(6) {
-  transition-delay: 0.5s;
-}
-.btn-53:hover span:nth-child(7) {
-  transition-delay: 0.6s;
-}
-.btn-53:hover span:nth-child(8) {
-  transition-delay: 0.7s;
-}
-.btn-53:hover span:nth-child(9) {
-  transition-delay: 1.0s;
-}
-
 
 
 
