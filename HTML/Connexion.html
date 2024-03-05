@@ -3,25 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styleco.css">
+    <link rel="stylesheet" href="/css/styleco.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600&display=swap">
     <title>Connexion</title>
-    <link rel="icon" href="capsule_w.png" type="image/x-icon">
+    <link rel="icon" href="/img/capsule_w.png" type="image/x-icon">
 </head>
+<script src="/js/Connexion.js"></script>
 <body>
     <header class="header1">
         <a href="https://www.youtube.com/watch?v=d_WjOBeLVn0&t=299s&ab_channel=EGO">
-        <img src="logopng.png" alt="Logo">
+        <img src="/img/logopng.png" alt="Logo">
     </a>
     </header>
     
     <header class="header2">
         <form >
-            <input type="text"placeholder="Votre Email" id="emailInput">
-            <input type="text"placeholder="Votre Mot de Passe" id="mdpInput">
-            <button class="btn-53">
+            <input type="text"placeholder="Votre Email" id="emailI" onblur="validemail(this)">
+            <span id="emailmsg"></span>
+            <input type="text"placeholder="Votre Mot de Passe" id="mdpI" onblur="validmdp(this)">
+            <span id="mdpmsg"></span>
+            <button type="button" class="btn-53" onclick="valid()">
                 <div class="original">Connexion</div>
-                <div class="letters" ">
+                <div class="letters">
                   
                   <span>C</span>
                   <span>O</span>
@@ -38,7 +41,7 @@
 
              
     </header>
-    <header class="inscription">
+    <header class="connexion">
              <p>Connexion</p>
     </header>
     

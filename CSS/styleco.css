@@ -2,12 +2,13 @@
   padding: 0;
   margin: 0;
  font-family:josefin sans;
+ cursor: url('glowing-cursor-2.png') auto;
   /* border: 1px solid red */
 }
 body{
   width: 98vw;
   height: 98vh;
-
+  cursor: url('glowing-cursor-2.png') auto;
 }
 .header1{
   display:flex;
@@ -38,6 +39,7 @@ body{
   height: 80vh;
   justify-content: center; 
   align-items: center; 
+  text-align: center  ;
   background: #e0e0e0;
 box-shadow: inset 39px 39px 78px #b8b8b8,
             inset -39px -39px 78px #ffffff;
@@ -52,7 +54,7 @@ box-shadow: inset 39px 39px 78px #b8b8b8,
   justify-content: center;
   align-items: center;
   text-align: center;
-  margin-bottom: 4vh;
+  margin: 4vh 0vh;
   padding:2vh;
   right: -1vw;
   border-radius: 35px;
@@ -65,7 +67,8 @@ box-shadow: inset 39px 39px 78px #b8b8b8,
   
  
 }
-.inscription{
+
+.connexion{
   display: flex;
   position:relative;
   width: 100vw;
@@ -111,7 +114,7 @@ box-shadow: inset 39px 39px 78px #b8b8b8,
   font-weight: 900;
   overflow: hidden;
   right:0vw;
-  bottom: -18vh;
+  bottom: -10vh;
   padding: 1.2rem 3rem;
   position: relative;
   text-transform: uppercase;
