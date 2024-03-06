@@ -5,7 +5,7 @@ function valid(){
     var msgmdp=document.getElementById("mdpmsg");
     if(mdp==="" || mail===""){
         if(mdp===""){
-            msgmdp.textContent="Ce champ doit être rempli"
+            msgmdp.textContent="Ce champ doit être rempli "
         }
         if(mail===""){
             msgemail.textContent="Ce champ doit être rempli"

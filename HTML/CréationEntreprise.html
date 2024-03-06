@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/stylecreaent.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600&display=swap">
-    <title>Créer une Entreprise</title>
+    <title>Entreprise</title>
     <link rel="icon" href="/img/capsule_w.png" type="image/x-icon">
 </head>
 <script src="/js/creatent.js"></script>
@@ -16,38 +16,26 @@
     </a>
     </header>
     
-    
     <header class="header2">
-        <form >
-            <input type="text"placeholder="Nom de l'Entreprise" id="nomEntI">
-            <span id="msgNom" class="msg"></span>
-            <input type="text"placeholder="Secteur de l'Entreprise" id="secteurI">
-            <span id="msgSecteur" class="msg"></span>
-            <input type="text"placeholder="Date de création "" id="datecreationI">
-            <span id="msgDate" class="msg"></span>
-            <button type="button" class="btn-53" onclick="validI()">
-                <div class="original">Connexion</div>
-                <div class="letters" ">
-                  
-                  <span>C</span>
-                  <span>O</span>
-                  <span>N</span>
-                  <span>N</span>
-                  <span>E</span>
-                  <span>X</span>
-                  <span>I</span>
-                  <span>O</span>
-                  <span>N</span>
-                </div>
-              </button>
-            </form>
-
-             
+        <form action="post" style="margin-top: 15vh;">
+            <input type="text"placeholder="Nom de l'entreprise" id="nomEntI" >
+            <select id="secteur">
+                <option value="option0">Choisissez une option</option>
+                <option value="option1">Informatique</option>
+                <option value="option2">BTP</option>
+                <option value="option3">Electronique</option>
+              </select>
+            <input type="text"placeholder="Date de création" id="dateCreaI">
+        </form>
+        <span id="msg"></span>
+        <button class="btn-53" onclick="valid()">
+           Créer
+          </button>
+          <p> * Tous les champs sont nécéssaires</p>
     </header>
-    <header class="creation">
-             <p>Création</p>
-             <p>d'Entreprise</p>
+    <header class="inscription">
+             <p>Espace Création d'entreprise</p>
     </header>
-    
+   
 </body>
 </html>
