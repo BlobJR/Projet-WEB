@@ -1,0 +1,130 @@
+* {
+    padding: 0;
+    margin: 0;
+   font-family:josefin sans;
+  
+    /* border: 1px solid red */
+  }
+  body{
+    width: 98vw;
+    height: 98vh;
+    background: #e0e0e0;
+    box-shadow: inset 10px 10px 20px rgba(0, 0, 0, 0.1);
+  }
+  .header1{
+    display:flex;
+    width: 100vw;
+    height: 12vh; 
+    background-color: black;
+    
+  }
+.header11{
+  display: flex;
+  width: 10vw;
+  height:12vh ;
+  justify-content: left;
+  align-items: left;
+  margin-right: 20vw;
+
+}
+.header11 a{
+  display: flex;
+  margin-left: 0.5vw;
+}
+.header11 img{
+  display: flex;
+  width: 100%;
+  height: 60%;
+  margin-top: 2vh;
+
+}
+.header12{
+  display: flex;
+  width: 40vw;
+  height: 12vh;
+  justify-content: center;
+}
+.header12 a{
+  display: flex;
+}
+.header12 img{
+  display: flex;
+  width: 100%;
+  height: 40%;
+  margin-top: 3vh;
+}
+.header13{
+  display: flex;
+  width: 10vw;
+  height:12vh ;
+  float: right;
+  justify-content: right;
+  align-self: right;
+  margin-left: auto;
+  
+}
+.header13 a{
+  display: flex;
+  width: auto;
+  height: auto;
+  
+}
+.header13 img{
+  display: flex;
+  width: auto;
+  height: auto;
+}
+.header2{
+  display: block;
+  flex-direction: column;
+  float: left;
+  width: 40vw;
+  height: 60vh;
+  
+}
+.header2 a{
+  display: flex;
+  margin-top: 10vh;
+  margin-left: 8vw;
+}
+.header2 img{
+  display: flex;
+  width: 250px;
+  height: 250px;
+}
+.header2 p{
+  display: flex;
+  margin-top: 8vh;
+ margin-left: 8vw;
+ font-size: 150%;
+}
+.header3{
+  display: block;
+  flex-direction:column ;
+  float: right;
+  width: 40vw;
+  height: 60vh;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin-top: 4vh;
+}
+.header3 button{
+  display: flex;
+  width: 15vw;
+  height: 6vh;
+  margin-top: 3vh;
+  color: white;
+  background-color: black;
+  border-radius: 75px;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  
+}
+@media only screen and (max-width: 1200px) {
+  .header2  {
+    display: none; /* Cache le lien lorsque la fenêtre est réduite */
+  }
+ 
+}
