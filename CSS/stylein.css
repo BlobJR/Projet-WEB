@@ -32,7 +32,7 @@ body{
 .header2{
     display:flex;
     width: 100vw;
-    height: 80vh;
+    height: 88vh;
     justify-content: center; 
     align-items: center; 
     text-align: center;
@@ -69,7 +69,7 @@ box-shadow: inset 39px 39px 78px #b8b8b8,
 .header2 p{
   display: flex;
   position: relative;
-  margin-top: 10vh;
+  margin-top: 5vh;
   
 }
 .header2 span {
@@ -80,6 +80,21 @@ box-shadow: inset 39px 39px 78px #b8b8b8,
  font-size: 1vw;
 
 }
+.header2 select{
+    margin: auto;
+    margin-bottom: 4vh;
+    width: 15vw;
+    height: 8vh;
+    padding:3vh;
+    border-radius: 35px;
+    border-style: solid;
+    border-color: #131213;
+    background-color: #131213;
+    color: white; 
+    font-weight: bold; 
+    border-radius: 71px;
+   
+}
 .inscription{
     display: flex;
     position:relative;
@@ -88,7 +103,7 @@ box-shadow: inset 39px 39px 78px #b8b8b8,
     border-color: #131213;
     align-items: center;
     justify-content: center;
-    bottom:75vh;
+    bottom:85vh;
     font-size: 5vh;
   
     
