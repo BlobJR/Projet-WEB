@@ -19,16 +19,19 @@
     
     <header class="header2">
         <form action="post" style="margin-top: 4vh;">
-            <input type="text" placeholder="Votre Email" id="emailInput" onblur="verifmail(this)">
-            <input type="password" placeholder="Votre Mot de Passe" id="mdpInput">
-            <input type="text" placeholder="Votre Nom" id="nomInput">
-            <input type="text" placeholder="Votre Prenom" id="prenomInput">
+            <input type="text" placeholder="Votre Email" id="emailI" onblur="verifmail(this)">
+
+            <input type="password" placeholder="Votre Mot de Passe" id="mdpI">
+            <input type="text" placeholder="Votre Nom" id="nomI">
+            <input type="text" placeholder="Votre Prenom" id="prenomI">
             <select name="role" id="roleSelect" class="select">
                 <option value="pilote">Pilote</option>
                 <option value="etudiant">Étudiant</option>
             </select>
         </form>
-        <span id="msg"></span>
+        <span id="mdpmsg" style="margin-bottom: 10vh;"></span>
+        <span id="emailmsg" style="margin-bottom: 60vh;"></span>
+      
         <button class="btn-53" onclick="valid()">
             Inscription
           </button>

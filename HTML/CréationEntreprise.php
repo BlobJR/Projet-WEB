@@ -1,3 +1,17 @@
+<?php
+$serveur = "localhost";
+$utilisateur = "root";
+$mdp = ""; 
+$base_de_donnees = "projet";
+// Connexion à la base de données
+$pdo =new PDO("mysql:host=$serveur;dbname=$base_de_donnees", $utilisateur, $mdp);
+
+// Requête pour récupérer tous les secteurs
+$query = "SELECT nom_secteur FROM secteur";
+$stmt = $pdo->prepare($query);
+$stmt->execute();
+$secteurs = $stmt->fetchAll(PDO::FETCH_ASSOC);
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,11 +35,15 @@
     <header class="header2">
         <form >
             <input type="text" placeholder="Nom de l'Entreprise" id="nomEntI">
-            <span id="msgNom" class="msg"></span>
-            <input type="text" placeholder="Secteur de l'Entreprise" id="secteurI">
-            <span id="msgSecteur" class="msg"></span>
+            <select name="role" id="roleSelect" class="select">
+            <?php foreach ($secteurs as $secteur): ?>
+            <option value="<?php echo $secteur['nom_secteur']; ?>"><?php echo $secteur['nom_secteur']; ?></option>
+        <?php endforeach; ?>
+            </select>
             <input type="text" placeholder="Date de création " id="datecreationI">
-            <span id="msgDate" class="msg"></span>
+            <input type="text" placeholder="Adresse" id="adresseI">
+            <input type="text" placeholder="Ville" id="villeI">
+            <input type="text" placeholder="Code Postal" id="cpI">
             <button type="button" class="btn-53" onclick="validI()">
               Créer
               </button>

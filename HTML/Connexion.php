@@ -87,7 +87,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </form>
         <span id="mdpmsg" style="margin-bottom: 10vh;"></span>
         <span id="emailmsg" style="margin-bottom: 30vh;"></span>
-            <button type="button" class="btn-53" onclick="valid()">
+            <button type="button" class="btn-53" onclick="valid(event)">
                 Connexion 
               </button>
            
