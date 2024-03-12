@@ -9,13 +9,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["formValidated"]) && $_
    $mdp=$_POST['mdp'];
    $nom=$_POST['nom'];
    $prenom=$_POST['prenom'];
-   $query_check = "SELECT * FROM personne WHERE nom = :nom AND prenom=:prenom";
+   $query_check = "SELECT * FROM personne WHERE email=:email";
     $stmt_check = $pdo->prepare($query_check);
-    $stmt_check->bindParam(':nom', $nom);
-    $stmt_check->bindParam(':prenom', $prenom);
+    $stmt_check->bindParam(':email', $mail);
     $stmt_check->execute();
     if($stmt_check->rowCount()>0){
-        echo "<script>alert('Étudiant déjà existant');</script>";
+        echo "<script>alert('email deja utilisé');</script>";
     }else{
         $role=$_POST['role'];
         if($role==="etudiant"){
