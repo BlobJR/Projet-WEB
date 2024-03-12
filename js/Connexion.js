@@ -3,15 +3,20 @@ function valid(){
     var mdp=document.getElementById("mdpI").value.trim();
     var msgemail=document.getElementById("emailmsg");
     var msgmdp=document.getElementById("mdpmsg");
+    var isValid=false;
     if(mdp==="" || mail===""){
         if(mdp===""){
-            msgmdp.textContent="Ce champ doit être rempli "
+            msgmdp.textContent="Ce champ doit être rempli"
         }
         if(mail===""){
             msgemail.textContent="Ce champ doit être rempli"
         }
     }else {
-        sendData();
+        isValid=true;
+        
+    }
+    if(isValid){
+        document.getElementById("myForm").submit();
     }
 }
 function validemail(input){
@@ -28,33 +33,4 @@ function validemail(input){
         msgemail.textContent = "Adresse email invalide";
     }
 }
-function sendData(){
-    var user = document.getElementById('emailI').value
-    var password = document.getElementById('mdpI').value
 
-    fetch(`http://localhost:25565/auth/login/${password}/${user}`, {
-        method: 'GET',
-        headers: {
-            'Content-Type': 'application/json'
-        }
-    })
-    .then(response => response.text())
-    .then(data => {
-        console.log(data)
-        if(data == "Student"){
-            window.location.href = 'dashboard.html';
-            console.log(data);
-        }
-        if(data == "Pilote"){
-            window.location.href = 'dashboard-admin.html';
-            console.log(data);
-        }
-        if(data == "Admin"){
-            window.location.href = '/html/test.html';
-            console.log(data);
-        }
-        if(data!=="Admin" && data!=="Pilote" && data!=="Student"){
-            alert("nom d'utilisateur ou mot de passe incorrect")
-        }
-    })
-};

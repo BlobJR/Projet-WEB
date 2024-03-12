@@ -1,144 +1,125 @@
 * {
-  padding: 0;
-  margin: 0;
- font-family:josefin sans;
-
-  /* border: 1px solid red */
+    padding: 0;
+    margin: 0;
+   font-family:josefin sans;
+    /* border: 1px solid red */
 }
 body{
-  width: 98vw;
-  height: 98vh;
-
+    width: 98vw;
+    height: 98vh;
+ 
 }
 .header1{
-  display:flex;
-  width: 100vw;
-  height: 12vh;
-  background-color: black;
-  align-items: center;
-  justify-content: center;
+    display:flex;
+    width: 100vw;
+    height: 12vh;
+    background-color: black;
+    align-items: center;
+    justify-content: center;
 }
 .header1 img{
-  width: 20%;
-  height: 30%;
- 
+    width: 20%;
+    height: 30%;
+   
 }
 .header1 a{
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
- 
+  
+    display: flex;
+    align-items: center;
+    justify-content: center;
+   
 }
 .header2{
-  display:flex;
-  width: 100vw;
-  height: 80vh;
-  justify-content: center; 
-  align-items: center; 
-  text-align: center;
+    display:flex;
+    width: 100vw;
+    height: 80vh;
+    justify-content: center; 
+    align-items: center; 
+    
 background: #e0e0e0;
 box-shadow: inset 39px 39px 78px #b8b8b8,
-          inset -39px -39px 78px #ffffff;
-  flex-direction: column;
-
+            inset -39px -39px 78px #ffffff;
 
 }
-
 .header2 input{
-  display:flex;
-  flex-direction: column;
-  width: 15vw;
-  height:3vh ;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  margin: auto;
-  margin-bottom: 4vh;
-  padding:2vh;
-  border-radius: 35px;
-  border-style: solid;
-  border-color: #131213;
-  background-color: #131213;
-  color: white; 
-  font-weight: bold; 
-  border-radius: 71px;
-  position: relative;
-  
+    display:flex;
+    width: 15vw;
+    height:3vh ;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 4vh;
+    padding:2vh;
+    border-radius: 35px;
+    border-style: solid;
+    border-color: #131213;
+    background-color: #131213;
+    color: white; 
+    font-weight: bold; 
+    border-radius: 71px;
+    position: relative;
+    right: -1vw;
+    top: 10vh;
+    
+    
+}
+.creation{
+    display: flex;
+    position:relative;
+    flex-direction: column;
+    margin-top: 3vh;
+    padding: 0;
+    width: 100vw;
+    height:5vh ;
+    border-color: #131213;
+    align-items: center;
+    justify-content: center;
+    top:-75vh;
+    font-size: 5vh;
+    
 }
 
-.header2 p{
-display: flex;
-position: relative;
-margin-top: 10vh;
 
-}
-.header2 span {
-display: flex;
-position: absolute;
-margin-left: 40vw;
-margin-bottom: 40vh;
-font-size: 1vw;
-
-}
-.inscription{
-  display: flex;
-  position:relative;
-  width: 100vw;
-  height:5vh ;
-  border-color: #131213;
-  align-items: center;
-  justify-content: center;
-  bottom:75vh;
-  font-size: 5vh;
-
-  
-}
 .btn-53,
 .btn-53 *,
 
 
 .btn-53 {
-
-background-color: #000;
-color: #fff;
-cursor: pointer;
-font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
-  Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif,
-  Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
-font-size: 100%;
-margin-top: 0vh;
-border: 1px solid;
-border-radius: 999px;
-box-sizing: border-box;
-display: block;
-font-weight: 900;
-overflow: hidden;
-width: 10vw;
-height: 5vh;
-text-transform: uppercase;
-padding: 0;
+  
+  background-color: #000;
+  color: #fff;
+  cursor: pointer;
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+    Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif,
+    Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+  font-size: 100%;
+  margin-top: 15vh;
+  margin-left: 4.5vw;
+  border: 1px solid;
+  border-radius: 999px;
+  box-sizing: border-box;
+  display: block;
+  font-weight: 900;
+  overflow: hidden;
+  width: 10vw;
+  height: 5vh;
+  text-transform: uppercase;
+  padding: 0;
 }
 
 
 .btn-53 {
-border: 1px solid;
-border-radius: 999px;
-box-sizing: border-box;
-display: block;
-font-weight: 900;
-overflow: hidden;
-/* right:1vw; */
-width: 10vw;
-height: 5vh;
-/* bottom: -30vh; */
-/* padding: 1.2rem 3rem;
-position: relative; */
-text-transform: uppercase;
+  border: 1px solid;
+  border-radius: 999px;
+  box-sizing: border-box;
+  display: block;
+  font-weight: 900;
+  overflow: hidden;
+  /* right:1vw; */
+  width: 10vw;
+  height: 5vh;
+  /* bottom: -30vh; */
+  /* padding: 1.2rem 3rem;
+  position: relative; */
+  text-transform: uppercase;
 }
-
-
-
-
-
-

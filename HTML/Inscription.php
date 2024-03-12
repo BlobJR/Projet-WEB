@@ -3,25 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/stylein.css">
+    <link rel="stylesheet" href="../css/stylein.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600&display=swap">
     <title>Inscription</title>
-    <link rel="icon" href="/img/capsule_w.png" type="image/x-icon">
+    <link rel="icon" href="../img/capsule_w.png" type="image/x-icon">
+    <script src="../js/inscription.js"></script>
 </head>
-<script src="/js/inscription.js"></script>
+
 <body>
     <header class="header1">
         <a href="https://www.youtube.com/watch?v=d_WjOBeLVn0&t=299s&ab_channel=EGO">
-        <img src="/img/logopng.png" alt="Logo">
+        <img src="../img/logopng.png" alt="Logo">
     </a>
     </header>
     
     <header class="header2">
         <form action="post" style="margin-top: 4vh;">
-            <input type="text"placeholder="Votre Email" id="emailInput" onblur="verifmail(this)">
-            <input type="password"placeholder="Votre Mot de Passe" id="mdpInput">
-            <input type="text"placeholder="Votre Nom" id="nomInput">
-            <input type="text"placeholder="Votre Prenom" id="prenomInput">
+            <input type="text" placeholder="Votre Email" id="emailInput" onblur="verifmail(this)">
+            <input type="password" placeholder="Votre Mot de Passe" id="mdpInput">
+            <input type="text" placeholder="Votre Nom" id="nomInput">
+            <input type="text" placeholder="Votre Prenom" id="prenomInput">
             <select name="role" id="roleSelect" class="select">
                 <option value="pilote">Pilote</option>
                 <option value="etudiant">Étudiant</option>

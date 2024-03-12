@@ -82,15 +82,13 @@
   height: 60vh;
   
 }
-.header2 a{
-  display: flex;
-  margin-top: 10vh;
-  margin-left: 8vw;
-}
+
 .header2 img{
   display: flex;
   width: 250px;
   height: 250px;
+  margin-top: 10vh;
+  margin-left: 8vw;
 }
 .header2 p{
   display: flex;

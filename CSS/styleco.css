@@ -2,13 +2,11 @@
   padding: 0;
   margin: 0;
  font-family:josefin sans;
- cursor: url('glowing-cursor-2.png') auto;
   /* border: 1px solid red */
 }
 body{
   width: 98vw;
   height: 98vh;
-  cursor: url('glowing-cursor-2.png') auto;
 }
 .header1{
   display:flex;

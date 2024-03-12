@@ -3,35 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/stylecompteA.css">
+    <link rel="stylesheet" href="../css/stylecompteP.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600&display=swap">
     <title>Gestion de compte</title>
-    <link rel="icon" href="/img/capsule_w.png" type="image/x-icon">
+    <link rel="icon" href="../img/capsule_w.png" type="image/x-icon">
 </head>
-<script src="/js/compte.js"></script>
 <body>
   <header class="header1">
-    <header class="header11">
+    <div class="header11">
         <a href="https://www.youtube.com/watch?v=d_WjOBeLVn0&t=299s&ab_channel=EGO">
-            <img src="/img/white_back_arrow_logo.png" alt="Logo">
+            <img src="../img/white_back_arrow_logo.png" alt="Logo">
         </a>
-    </header>
-    <header class="header12">
+    </div>
+    <div class="header12">
         <a href="https://www.youtube.com/watch?v=d_WjOBeLVn0&t=299s&ab_channel=EGO">
-            <img src="/img/logopng.png" alt="Logo">
+            <img src="../img/logopng.png" alt="Logo">
           </a>
-    </header>
-    <header class="header13">
+      </div>
+    <div class="header13">
       <a href="https://www.youtube.com/watch?v=d_WjOBeLVn0&t=299s&ab_channel=EGO">
-        <img src="/img/compte.png" alt="Logo">
+        <img src="../img/compte.png" alt="Logo">
       </a>
-    </header>
+</div>
   </header>
     <header class="header2">
-      <a href="https://www.youtube.com/watch?v=d_WjOBeLVn0&t=299s&ab_channel=EGO">
-        <img src="/img/2354573.png" alt="Logo">
-      </a>
-      <p>Espace Administrateur</p>
+        <img src="../img/2354573.png" alt="Logo">
+     
+      <p>Espace Pilote</p>
     </header>
     <header class="header3">
       
@@ -40,9 +38,7 @@
       <button type="button">Créer une offre</button>
       <button type="button">Modifier une offre</button>
       <button type="button">Créer un compte étudiant</button>
-      <button type="button">Modifier un compte étudiant</button>
-      <button type="button">Créer un compte Pilote</button>
-      <button type="button">Modifier un compte Pilote</button>
+      <button type="button" onclick="window.location.href='/html/Connexion.html'">Modifier un compte étudiant</button>
     </header>
 </body>
 </html> 
