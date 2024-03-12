@@ -42,11 +42,12 @@ $secteurs = $stmt->fetchAll(PDO::FETCH_ASSOC);
             </select>
             <input type="text" placeholder="Date de création " id="datecreationI">
             <input type="text" placeholder="Adresse" id="adresseI">
-            <input type="text" placeholder="Ville" id="villeI">
+            <input type="text" placeholder="Ville" id="villeI" onblur="getcp()">
             <input type="text" placeholder="Code Postal" id="cpI">
             <button type="button" class="btn-53" onclick="validI()">
               Créer
               </button>
+              <p> * Tous les champs sont nécéssaires</p>
             </form>
 
              
