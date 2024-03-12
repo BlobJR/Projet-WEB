@@ -1,6 +1,9 @@
 <?php
-if(isset($_GET['role'])) {
-    $role = $_GET['role'];
+// Vérifiez si le cookie 'role' est défini avant de l'utiliser
+if(isset($_COOKIE['role'])) {
+    // Récupérez la valeur du cookie 'role'
+    $role = $_COOKIE['role'];
+    // Affichez la valeur du rôle
     echo "Le rôle de l'utilisateur est : $role";
 } else {
     echo "Le rôle n'est pas spécifié.";

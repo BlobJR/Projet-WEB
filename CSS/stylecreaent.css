@@ -37,7 +37,7 @@ body{
     justify-content: center; 
     align-items: center; 
     text-align: center;
-    
+    flex-direction: column;
 
 
 }
@@ -45,29 +45,30 @@ body{
   margin-top: 15vh;
 }
 .header2 input{
-    display:flex;
-    width: 15vw;
-    height:3vh ;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    margin: 2vh 0vh;  
-    padding:2vh;
-    border-radius: 35px;
-    border-style: solid;
-    border-color: #131213;
-    background-color: #131213;
-    color: white; 
-    font-weight: bold; 
-    border-radius: 71px;
-    position: relative;
-    right: 0vw;
-   
+  display:flex;
+  flex-direction: column;
+  width: 15vw;
+  height:3vh ;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin: auto;
+  margin-bottom: 2vh;
+  padding:2vh;
+  border-radius: 35px;
+  border-style: solid;
+  border-color: #131213;
+  background-color: #131213;
+  color: white; 
+  font-weight: bold; 
+  border-radius: 71px;
+  position: relative;
 
     
 }
 .header2 select{
   margin: 0;
+  margin-bottom: 2vh;
   align-self: center;
   width: 17vw;
   height: 8vh;
@@ -86,6 +87,7 @@ body{
   display: flex;
   position: relative;
   margin-top: 5vh;
+  margin-left: 3vw;
   
 }
 .msg{

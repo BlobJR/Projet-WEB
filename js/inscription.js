@@ -23,7 +23,8 @@ if (!emailPattern.test(mail)) {
 
 
     if (isValid) {
-        
+        document.getElementById("formValidated").value = "1";
+        document.getElementById("myForm").submit();
         console.log("C bon")
     }
 }

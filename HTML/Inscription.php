@@ -1,3 +1,39 @@
+<?php
+$serveur = "localhost";
+$utilisateur = "root";
+$mdp = ""; 
+$base_de_donnees = "projet";
+$pdo =new PDO("mysql:host=$serveur;dbname=$base_de_donnees", $utilisateur, $mdp);
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["formValidated"]) && $_POST["formValidated"] == "1") {
+   $mail=$_POST['mail'];
+   $mdp=$_POST['mdp'];
+   $nom=$_POST['nom'];
+   $prenom=$_POST['prenom'];
+   $query_check = "SELECT * FROM personne WHERE nom = :nom AND prenom=:prenom";
+    $stmt_check = $pdo->prepare($query_check);
+    $stmt_check->bindParam(':nom', $nom);
+    $stmt_check->bindParam(':prenom', $prenom);
+    $stmt_check->execute();
+    if($stmt_check->rowCount()>0){
+        echo "<script>alert('Étudiant déjà existant');</script>";
+    }else{
+        $role=$_POST['role'];
+        if($role==="etudiant"){
+            $role="Etudiant";
+        }
+        $query_insert = "INSERT INTO personne (nom, prenom,email,mdp,role) VALUES (:nom, :prenom, :mail, :mdp, :role)";
+        $stmt_insert = $pdo->prepare($query_insert);
+        $stmt_insert->bindParam(':nom', $nom);
+        $stmt_insert->bindParam(':prenom', $prenom);
+        $stmt_insert->bindParam(':mail', $mail);
+        $stmt_insert->bindParam(':mdp', $mdp);
+        $stmt_insert->bindParam(':role', $role);
+        $stmt_insert->execute();
+        header("Location: compteA.php");
+    }
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,12 +54,12 @@
     </header>
     
     <header class="header2">
-        <form action="post" style="margin-top: 4vh;">
-            <input type="text" placeholder="Votre Email" id="emailI" onblur="verifmail(this)">
-
-            <input type="password" placeholder="Votre Mot de Passe" id="mdpI">
-            <input type="text" placeholder="Votre Nom" id="nomI">
-            <input type="text" placeholder="Votre Prenom" id="prenomI">
+        <form method="POST" name="myForm" id="myForm" style="margin-top: 4vh;">
+            <input type="text" name="mail" placeholder="Votre Email" id="emailI" onblur="verifmail(this)">
+            <input type="password" name="mdp" placeholder="Votre Mot de Passe" id="mdpI">
+            <input type="text" name="nom" placeholder="Votre Nom" id="nomI">
+            <input type="text" name="prenom" placeholder="Votre Prenom" id="prenomI">
+            <input type="hidden" name="formValidated" id="formValidated" value="0">
             <select name="role" id="roleSelect" class="select">
                 <option value="pilote">Pilote</option>
                 <option value="etudiant">Étudiant</option>

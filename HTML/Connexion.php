@@ -6,7 +6,9 @@ $mdp = "";
 $base_de_donnees = "projet";
 
 // Vérifier si le formulaire a été soumis
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["formValidated"]) && $_POST["formValidated"] == "1") {
+
+
     try {
        
         $conn = new PDO("mysql:host=$serveur;dbname=$base_de_donnees", $utilisateur, $mdp);
@@ -33,17 +35,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 // echo "Le rôle de l'utilisateur est : $role";
                 switch ($role) {
                     case "Admin":
-                        header("Location:../HTML/compteA.php?role=Admin");
+                        header("Location:../HTML/compteA.php");
+                        setcookie("role", "$role", time() + (86400 * 30), "/");
                         exit(); // Assurez-vous de terminer le script après la redirection
-                        break;
+                        
                     case "Etudiant":
                         header("Location: ../HTML/compteE.php?role=Etudiant");
                         exit();
-                        break;
+                        
                     case "Pilote":
                         header("Location: lien_vers_page_pilote.php?role=Pilote");
                         exit();
-                        break;
+                       
                     default:
                         echo "Rôle non reconnu.";
                 }
@@ -83,6 +86,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <input type="text" placeholder="Votre Email" name="email" id="emailI" onblur="validemail(this)">
            
             <input type="password" placeholder="Votre Mot de Passe" id="mdpI" name="mdp" >
+            <input type="hidden" name="formValidated" id="formValidated" value="0">
             
         </form>
         <span id="mdpmsg" style="margin-bottom: 10vh;"></span>

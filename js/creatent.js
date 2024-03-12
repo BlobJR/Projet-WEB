@@ -1,20 +1,16 @@
 function validI(){
     var nomE=document.getElementById("nomEntI").value.trim();
-    var secteur=document.getElementById("secteurI").value.trim();
+    var secteur=document.getElementById("secteurS").value.trim();
     var date=document.getElementById("datecreationI").value.trim();
-    var msgNom=document.getElementById("msgNom");
-    var msgSecteur=document.getElementById("msgSecteur");
-    var msgdate=document.getElementById("msgDate");
-    if (nomE===""|| secteur==="" || date===""){
-        if(nomE===""){
-            msgNom.textContent="Ce champ ne peut être vide"
-        }if (secteur===""){
-            msgSecteur.textContent="Ce champ ne peut être vide"
-        }if(date===""){
-            msgdate.textContent="Ce champ ne peut être vide"
-        }
+    var secteur=document.getElementById("secteurS").value
+    var adresse =document.getElementById("adresseI").value
+    var ville =document.getElementById("villeI").value
+    var cp =document.getElementById("cpI").value
+    if (nomE===""|| secteur==="" || date==="" ||secteur==="Choisissez une option" || adresse===""|| ville===""|| cp===""){
+        alert("Tous les champs doivent être remplis")
     }else{
-        window.location.href='https://zubkostudio.com/'
+        document.getElementById("formValidated").value = "1";
+        document.getElementById("myForm").submit();
     }
 }
 function getcp(){
