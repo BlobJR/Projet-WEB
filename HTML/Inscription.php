@@ -28,9 +28,36 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["formValidated"]) && $_
         $stmt_insert->bindParam(':mdp', $mdp);
         $stmt_insert->bindParam(':role', $role);
         $stmt_insert->execute();
-        header("Location: compteA.php");
+        $id_personne=$pdo->lastInsertId();
+        switch ($role) {
+            case "Admin":
+                $query_insert = "INSERT INTO admin (idper) VALUES (:idper)";
+                $stmt_insert = $pdo->prepare($query_insert);
+                $stmt_insert->bindParam(':idper', $id_personne);
+                
+                break;
+            case "Etudiant":
+                $query_insert = "INSERT INTO etudiant (idper) VALUES (:idper)";
+                $stmt_insert = $pdo->prepare($query_insert);
+                $stmt_insert->bindParam(':idper', $id_personne);
+                $stmt_insert->execute();
+                
+                break;
+            case "Pilote":
+               
+                $query_insert = "INSERT INTO pilote (idper) VALUES (:idper)";
+                $stmt_insert = $pdo->prepare($query_insert);
+                $stmt_insert->bindParam(':idper', $id_personne);
+                $stmt_insert->execute();
+                break;
+               
+        }
     }
+
 }
+
+    
+
 
 ?>
 <!DOCTYPE html>
