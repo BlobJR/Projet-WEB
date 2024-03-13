@@ -1,0 +1,150 @@
+*{
+    padding: 0;
+    margin: 0;
+   font-family:josefin sans;
+  
+    /* border: 1px solid red */
+  }
+  body{
+    width: 100vw;
+    height: 100vh;
+  
+  }
+.header {
+    background-color: black;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 12vh;
+    width: 100%;
+}
+
+
+
+
+.retour {
+    color: #fff;
+    font-family: 'Josefin Sans', sans-serif;
+    line-height: 2;
+    position: relative;
+    margin-left: 5vh;
+}
+
+.retour::before {
+    content: '';
+    width: 0;
+    height: 2px;
+    border-radius: 2px;
+    background-color: #fff;
+    position: absolute;
+    bottom: -.25rem;
+    left: 0;
+    transition: width .4s;
+}
+
+.retour:hover::before {
+    width: 100%;
+}
+
+.logo {
+    flex: 1; /* Utiliser tout l'espace disponible */
+    text-align: center; /* Centrer horizontalement le contenu du logo */
+}
+
+.logo img {
+    height: auto;
+   height: 6vh; 
+   align-items: center;
+   margin-RIGHT: 20vh;
+}
+
+.body{
+    background-color: #dedede;
+}
+
+
+.offre {
+    display: flex;
+    position: relative;
+    width: 85vw;
+    height: 75vh; 
+    background: rgb(0 0 0/ 45%);
+    margin: auto; 
+    margin-top: 7vh; 
+    border-radius: 45px;
+    color: white;
+    font-family: 'Josefin sans';
+    padding: 20px; 
+    flex-direction: row;
+}
+
+.left h2 {
+    font-size: 35px; 
+  }
+
+.left{
+    display: flex;
+    position: relative;
+    flex: 1;
+    flex-direction: column;
+    align-items: center; 
+    justify-content: center; 
+}
+  
+.right {
+    display: flex;
+    position: relative;
+    flex: 1;
+    flex-direction: column;
+    align-items: center; 
+    justify-content: center; 
+  }
+
+.bouton {
+    position: relative;
+    display: inline-block;
+    padding: 10px 20px;
+    cursor: pointer;
+    background-color: white;
+    color: black;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    margin-top: 150px; 
+    margin-bottom: -200px; 
+}
+
+.custom-file-upload {
+    display: inline-block;
+    padding: 10px 20px;
+    cursor: pointer;
+    background-color: white;
+    color: black;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    margin-bottom: 10px; 
+    margin-bottom : 50px;
+  }
+  
+  .custom-file-upload:hover {
+    background-color: white;
+  }
+
+  .left > *:not(.Intitule) {
+    margin-top: 35px;
+  }
+  
+  .Intitule {
+    margin-top: 150px;
+    margin-bottom: auto;
+}
+
+.Competences{
+    margin-bottom: 225px;
+}
+
+@media screen and (max-width: 932px) {
+
+}
