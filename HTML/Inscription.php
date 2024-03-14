@@ -1,9 +1,5 @@
 <?php
-$serveur = "localhost";
-$utilisateur = "root";
-$mdp = ""; 
-$base_de_donnees = "projet";
-$pdo =new PDO("mysql:host=$serveur;dbname=$base_de_donnees", $utilisateur, $mdp);
+require_once'connexiondb.php';
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["formValidated"]) && $_POST["formValidated"] == "1") {
    $mail=$_POST['mail'];
    $mdp=$_POST['mdp'];
@@ -28,36 +24,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["formValidated"]) && $_
         $stmt_insert->bindParam(':mdp', $mdp);
         $stmt_insert->bindParam(':role', $role);
         $stmt_insert->execute();
-        $id_personne=$pdo->lastInsertId();
-        switch ($role) {
-            case "Admin":
-                $query_insert = "INSERT INTO admin (idper) VALUES (:idper)";
-                $stmt_insert = $pdo->prepare($query_insert);
-                $stmt_insert->bindParam(':idper', $id_personne);
-                
-                break;
-            case "Etudiant":
-                $query_insert = "INSERT INTO etudiant (idper) VALUES (:idper)";
-                $stmt_insert = $pdo->prepare($query_insert);
-                $stmt_insert->bindParam(':idper', $id_personne);
-                $stmt_insert->execute();
-                
-                break;
-            case "Pilote":
-               
-                $query_insert = "INSERT INTO pilote (idper) VALUES (:idper)";
-                $stmt_insert = $pdo->prepare($query_insert);
-                $stmt_insert->bindParam(':idper', $id_personne);
-                $stmt_insert->execute();
-                break;
-               
-        }
+        header("Location: compteA.php");
     }
-
 }
-
-    
-
 
 ?>
 <!DOCTYPE html>

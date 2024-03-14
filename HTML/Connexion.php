@@ -1,18 +1,11 @@
 <?php
-// Paramètres de connexion à la base de données
-$serveur = "localhost";
-$utilisateur = "root";
-$mdp = ""; 
-$base_de_donnees = "projet";
-
-// Vérifier si le formulaire a été soumis
+require_once'connexiondb.php';
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["formValidated"]) && $_POST["formValidated"] == "1") {
 
 
     try {
        
-        $conn = new PDO("mysql:host=$serveur;dbname=$base_de_donnees", $utilisateur, $mdp);
-        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+       
         // echo "La connexion est bonne.<br>"; 
 
             $email = $_POST['email'];  
@@ -21,14 +14,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["formValidated"]) && $_
            
             $sql = "SELECT role FROM personne WHERE email = :email AND mdp = :mdp";
             $stmt = $conn->prepare($sql);
-
-            // Liaison des valeurs des paramètres
             $stmt->bindParam(':email', $email);
             $stmt->bindParam(':mdp', $mdp); 
-            // Exécuter la requête
             $stmt->execute();
 
-            // Vérifier s'il y a des résultats
+            
             if ($stmt->rowCount() > 0) {
                 $row = $stmt->fetch(PDO::FETCH_ASSOC);
                 $role = $row["role"];
@@ -37,7 +27,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["formValidated"]) && $_
                     case "Admin":
                         header("Location:../HTML/compteA.php");
                         setcookie("role", "$role", time() + (86400 * 30), "/");
-                        exit(); // Assurez-vous de terminer le script après la redirection
+                        exit(); 
                         
                     case "Etudiant":
                         header("Location: ../HTML/compteE.php?role=Etudiant");
@@ -92,7 +82,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["formValidated"]) && $_
         <span id="mdpmsg" style="margin-bottom: 10vh;"></span>
         <span id="emailmsg" style="margin-bottom: 30vh;"></span>
             <button type="button" class="btn-53" onclick="valid(event)">
-                Connexion 
+                Connexionn 
               </button>
            
 
