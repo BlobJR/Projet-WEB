@@ -39,19 +39,23 @@ margin-top: 2vh;
 
 }
 .header12{
-display: flex;
-width: 40vw;
-height: 12vh;
-justify-content: center;
+  display: flex;
+  width: 40vw;
+  height: 12vh;
+  justify-content: center;
+  align-items: center;
 }
 .header12 a{
-display: flex;
+  display: flex;
+  height: 12vh;
+  align-items: center;
+  justify-content: center;
 }
 .header12 img{
-display: flex;
-width: 100%;
-height: 40%;
-margin-top: 3vh;
+  display: flex;
+  width: 20vw;
+  height:30vh;
+  margin-top: 2vh;
 }
 .header13{
 display: flex;
@@ -85,15 +89,15 @@ height: 60vh;
 
 .header2 img{
 display: flex;
-width: 250px;
-height: 250px;
+width: 20vw;
+height: 40vh;
 margin-top: 10vh;
   margin-left: 8vw;
 }
 .header2 p{
 display: flex;
 margin-top: 8vh;
-margin-left: 9.5vw;
+margin-left: 10vw;
 font-size: 150%;
 }
 .header3{
@@ -118,11 +122,5 @@ border-radius: 75px;
 justify-content: center;
 align-items: center;
 cursor: pointer;
-
-}
-@media only screen and (max-width: 1200px) {
-.header2  {
-  display: none; /* Cache le lien lorsque la fenêtre est réduite */
-}
 
 }

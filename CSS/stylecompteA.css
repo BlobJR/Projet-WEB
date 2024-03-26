@@ -43,15 +43,16 @@
   width: 40vw;
   height: 12vh;
   justify-content: center;
+  align-items: center;
 }
 .header12 a{
   display: flex;
 }
 .header12 img{
   display: flex;
-  width: 100%;
-  height: 40%;
-  margin-top: 3vh;
+  width: 20vw;
+  height:30vh;
+  margin-top: 2vh;
 }
 .header13{
   display: flex;
@@ -119,10 +120,4 @@
   align-items: center;
   cursor: pointer;
   
-}
-@media only screen and (max-width: 1200px) {
-  .header2  {
-    display: none; /* Cache le lien lorsque la fenêtre est réduite */
-  }
- 
 }

@@ -4,10 +4,8 @@ if(isset($_COOKIE['role'])) {
     // Récupérez la valeur du cookie 'role'
     $role = $_COOKIE['role'];
     // Affichez la valeur du rôle
-    echo "Le rôle de l'utilisateur est : $role";
-} else {
-    echo "Le rôle n'est pas spécifié.";
-}
+    // echo "Le rôle de l'utilisateur est : $role";
+} 
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -17,7 +15,7 @@ if(isset($_COOKIE['role'])) {
     <link rel="stylesheet" href="../css/stylecompteA.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600&display=swap">
     <title>Gestion de compte</title>
-    <link rel="icon" href="..img/capsule_w.png" type="image/x-icon">
+    <link rel="icon" href="../img/capsule_w.png" type="image/x-icon">
 </head>
 <body>
   <header class="header1">
