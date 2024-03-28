@@ -1,6 +1,6 @@
 <?php
 require_once'connexiondb.php';
-require_once './../Controller/controlin.php';
+require_once '../../Controller/controlin.php';
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["formValidated"]) && $_POST["formValidated"] == "1") {
   insertto($pdo);
 }

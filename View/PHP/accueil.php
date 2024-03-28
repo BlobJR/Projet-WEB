@@ -1,16 +1,7 @@
 <?php
+require_once'../../Controller/controlaccueil.php';
 require_once 'connexiondb.php';
-
-try {
-    // Requête pour récupérer les offres de stage
-    $sql = "SELECT * FROM offre_stage";
-    $stmt = $pdo->prepare($sql);
-    $stmt->execute();
-
-    $offres = $stmt->fetchAll(PDO::FETCH_ASSOC);
-} catch (PDOException $e) {
-    echo "Erreur : " . $e->getMessage();
-}
+$offres=insertoff($pdo);
 ?>
 
 <!DOCTYPE html>

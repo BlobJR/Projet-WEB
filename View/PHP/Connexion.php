@@ -2,7 +2,9 @@
 require_once'connexiondb.php';
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["formValidated"]) && $_POST["formValidated"] == "1") {
 require_once'../../Controller/controlconnexion.php';
-insertco($pdo);
+$role=insertco($pdo);
+session_start();
+$_SESSION['role'] = $role; 
 } 
 ?>
 

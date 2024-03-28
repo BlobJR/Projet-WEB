@@ -7,7 +7,7 @@ try {
 
            $email = $_POST['email'];  
            $mdp = $_POST['mdp'];
-           echo $email;
+         
           
            $sql = "SELECT role FROM personne WHERE email = :email AND mdp = :mdp";
            $stmt = $pdo->prepare($sql);
@@ -19,11 +19,12 @@ try {
            if ($stmt->rowCount() > 0) {
                $row = $stmt->fetch(PDO::FETCH_ASSOC);
                $role = $row["role"];
+               
                // echo "Le rôle de l'utilisateur est : $role";
                switch ($role) {
                    case "Admin":
                        header("Location:../php/compteA.php");
-                       setcookie("role", "$role", time() + (86400 * 30), "/");
+                       return $role;
                        exit(); 
                        
                    case "Etudiant":
@@ -38,7 +39,7 @@ try {
                        echo "Rôle non reconnu.";
                }
            } else {
-               echo "Aucun utilisateur trouvé avec cet e-mail et ce mot de passe.";
+            echo '<script>alert("Aucun utilisateurs identifié avec ce mot de passe et cet identifiant ")</script>';
            }
        
    } catch(PDOException $e) {

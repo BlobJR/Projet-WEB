@@ -1,11 +1,11 @@
 <?php
-// Vérifiez si le cookie 'role' est défini avant de l'utiliser
-if(isset($_COOKIE['role'])) {
-    // Récupérez la valeur du cookie 'role'
-    $role = $_COOKIE['role'];
-    // Affichez la valeur du rôle
-    // echo "Le rôle de l'utilisateur est : $role";
-} 
+session_start();
+if (isset($_SESSION['role'])) {
+    $role = $_SESSION['role'];
+    echo $role; // Affiche le rôle de l'utilisateur (dans cet exemple, 'administrateur')
+} else {
+    echo "Le rôle n'est pas défini.";
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
