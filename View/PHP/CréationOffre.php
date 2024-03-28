@@ -1,3 +1,8 @@
+<?php
+require_once 'connexiondb.php';
+require_once '../../controller/controlcreaent.php';
+$secteurs=insertsecteur($pdo);
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,7 +24,13 @@
         <form >
             <input type="text" placeholder="Intitulé de l'Offre" id="nomEntI">
             <input type="text" placeholder="Niveau Requis" id="lvlI">
-            <input type="text" placeholder="Domaine " id="domaineI">
+            <select name="secteur" id="secteurS" class="select">
+            <option value="">Choisissez une option</option>
+            <?php foreach ($secteurs as $secteur): ?>
+                
+            <option value="<?php echo $secteur['nom_secteur']; ?>"><?php echo $secteur['nom_secteur']; ?></option>
+            <?php endforeach; ?>
+            </select>
             <input type="text" placeholder="Nombre de places "id="nbrPlaceI">
             <button class="btn-53">
                Créer
