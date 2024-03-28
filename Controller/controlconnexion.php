@@ -22,12 +22,12 @@ try {
                // echo "Le rôle de l'utilisateur est : $role";
                switch ($role) {
                    case "Admin":
-                       header("Location:../HTML/compteA.php");
+                       header("Location:../php/compteA.php");
                        setcookie("role", "$role", time() + (86400 * 30), "/");
                        exit(); 
                        
                    case "Etudiant":
-                       header("Location: ../HTML/compteE.php?role=Etudiant");
+                       header("Location: ../php/compteE.php?role=Etudiant");
                        exit();
                        
                    case "Pilote":
