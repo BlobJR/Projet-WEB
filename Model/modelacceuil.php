@@ -1,7 +1,9 @@
 <?php
 function getoff($pdo){
     try {
-        $sql = "SELECT * FROM offre_stage";
+        $sql = "SELECT offre_stage.*, secteur.nom_secteur 
+        FROM offre_stage 
+        JOIN secteur ON offre_stage.id_secteur = secteur.id_secteur;";
         $stmt = $pdo->prepare($sql);
         $stmt->execute();
 
