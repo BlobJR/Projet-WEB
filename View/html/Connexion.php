@@ -1,17 +1,8 @@
 <?php
 require_once'connexiondb.php';
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["formValidated"]) && $_POST["formValidated"] == "1") {
-require_once'../../Controller/controlconnexion.php';
-$result=insertco($pdo);
-$role = $result['role'];
-$idper = $result['idper'];
-$id_admin=$result['id_admin'];
-$id_pil=$result['id_pil'];
-session_start();
-$_SESSION['role'] = $role; 
-$_SESSION['idper'] = $idper; 
-$_SESSION['id_admin'] = $id_admin; 
-$_SESSION['id_pil'] = $id_pil; 
+require_once'controlconnexion.php';
+insertco($pdo);
 } 
 ?>
 

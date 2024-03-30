@@ -34,7 +34,7 @@
     <header class="header3">
       
       <button type="button">Ajouter une offre a la wishlist</button>
-      <button type="button" onclick="window.location.href = 'Connexion.php'">Se déconnecter</button>
+      <button type="button">Se déconnecter</button>
       
     </header>
 </body>

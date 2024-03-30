@@ -1,9 +1,22 @@
 <?php
 require_once 'connexiondb.php';
 require_once '../../controller/controlcreaent.php';
+session_start();
+if (isset($_SESSION['role'])) {
+    $role = $_SESSION['role'];
+    $idper=$_SESSION['idper'];
+    $id_admin=$_SESSION['id_admin'];
+    $id_pil=$_SESSION['id_pil'];
+    echo $role;
+    echo $idper;
+    echo $id_admin;
+    echo $id_pil;
+} else {
+    echo "Le rôle n'est pas défini.";
+}
 $secteurs=insertsecteur($pdo);
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["formValidated"]) && $_POST["formValidated"] == "1") {
-    insertent($pdo);
+    ent($pdo,$id_pil,$id_admin,$role);
 }
 ?>
 <!DOCTYPE html>
@@ -20,7 +33,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["formValidated"]) && $_
 
 <body>
     <header class="header1">
-        <a href="https://www.youtube.com/watch?v=d_WjOBeLVn0&t=299s&ab_channel=EGO">
+        <a href="accueil.php">
         <img src="../img/logopng.png" alt="Logo">
     </a>
     </header>

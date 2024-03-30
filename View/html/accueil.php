@@ -1,7 +1,16 @@
 <?php
-require_once'../../Controller/controlaccueil.php';
 require_once 'connexiondb.php';
-$offres=insertoff($pdo);
+
+try {
+    // Requête pour récupérer les offres de stage
+    $sql = "SELECT * FROM offre_stage";
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute();
+
+    $offres = $stmt->fetchAll(PDO::FETCH_ASSOC);
+} catch (PDOException $e) {
+    echo "Erreur : " . $e->getMessage();
+}
 ?>
 
 <!DOCTYPE html>
@@ -25,7 +34,7 @@ $offres=insertoff($pdo);
             </a>
         </div>
         <div class="account">
-            <a class="account" href="Connexion.php">COMPTE</a>
+            <a class="account" href="dashboard.html">COMPTE</a>
         </div>
 
     </header>
@@ -76,13 +85,13 @@ $offres=insertoff($pdo);
             <?php foreach ($offres as $offre_stage): ?>
                 <div class="offre">
                 <a href="offres.php?id=<?php echo $offre_stage['id_offre']; ?>" class="offre-link">
-                <div class="midle_content">
-                <h1 class="intitule"><?php echo $offre_stage['intitule']; ?></h1>
-                <p class="info">Niveau requis du poste : <span class="niveau_requis"><?php echo $offre_stage['niveau_requis']; ?></span></p>
-                <p class="info">Secteur du poste : <span class="secteur"><?php echo $offre_stage['nom_secteur']; ?></span></p>
-                <p class="info">Nombres de places du poste : <span class="nbr_places"><?php echo $offre_stage['nbr_places']; ?></span></p>
-                <p class="info">Compétences requises du poste : <span class="comp_requises"><?php echo $offre_stage['comp_requises']; ?></span></p>
-            </div>
+                        <div class="midle_content">
+                            <h1 class="intitule"><?php echo $offre_stage['intitule']; ?></h1>
+                            <p class="info">Niveau requis du poste : <span class="niveau_requis"><?php echo $offre_stage['niveau_requis']; ?></span></p>
+                            <p class="info">Domaine du poste : <span class="Domaine"><?php echo $offre_stage['domaine']; ?></span></p>
+                            <p class="info">Nombres de places du poste : <span class="nbr_places"><?php echo $offre_stage['nbr_places']; ?></span></p>
+                            <p class="info">Compétences requises du poste : <span class="comp_requises"><?php echo $offre_stage['comp_requises']; ?></span></p>
+                        </div>
                 </a>
                 </div>
             <?php endforeach; ?>

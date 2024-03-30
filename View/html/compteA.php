@@ -1,11 +1,11 @@
 <?php
-session_start();
-if (isset($_SESSION['role'])) {
-    $role = $_SESSION['role'];
-    $idper=$_SESSION['idper'];
-} else {
-    echo "Le rôle n'est pas défini.";
-}
+// Vérifiez si le cookie 'role' est défini avant de l'utiliser
+if(isset($_COOKIE['role'])) {
+    // Récupérez la valeur du cookie 'role'
+    $role = $_COOKIE['role'];
+    // Affichez la valeur du rôle
+    // echo "Le rôle de l'utilisateur est : $role";
+} 
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -25,7 +25,7 @@ if (isset($_SESSION['role'])) {
         </a>
     </div>
     <div class="header12">
-        <a href="accueil.php">
+        <a href="https://www.youtube.com/watch?v=d_WjOBeLVn0&t=299s&ab_channel=EGO">
             <img src="../img/logopng.png" alt="Logo">
           </a>
     </div>
@@ -43,13 +43,13 @@ if (isset($_SESSION['role'])) {
     </header>
     <header class="header3">
       
-      <button type="button" onclick="window.location.href = 'CréationEntreprise.php'">Créer une entreprise</button>
+      <button type="button">Créer une entreprise</button>
       <button type="button">Gérer une entreprise</button>
       <button type="button">Créer une offre</button>
       <button type="button">Modifier une offre</button>
-      <button type="button" onclick="window.location.href = 'Inscription.php'">Créer un compte étudiant</button>
+      <button type="button">Créer un compte étudiant</button>
       <button type="button">Modifier un compte étudiant</button>
-      <button type="button" onclick="window.location.href = 'Inscription.php'">Créer un compte Pilote</button>
+      <button type="button">Créer un compte Pilote</button>
       <button type="button">Modifier un compte Pilote</button>
     </header>
 </body>

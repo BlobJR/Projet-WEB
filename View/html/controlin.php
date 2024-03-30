@@ -26,25 +26,16 @@ $mail=$_POST['mail'];
         $stmt_insert->execute();
         header("Location: compteA.php");
         $id_personne= $pdo->lastInsertId();
-        switch ($role) {
-            case "Admin":
-                $query_insert2 = "INSERT INTO admin (idper) VALUES (:id_personne)";
-                $stmt_insert2 = $pdo->prepare($query_insert2);
-                $stmt_insert2->bindParam(':id_personne', $id_personne);
-                $stmt_insert2->execute();
-                exit();
-            case "Etudiant":
-                $query_insert1 = "INSERT INTO etudiant (idper) VALUES (:id_personne)";
-                $stmt_insert1 = $pdo->prepare($query_insert1);
-                $stmt_insert1->bindParam(':id_personne', $id_personne);
-                $stmt_insert1->execute();
-                exit();
-            case "pilote":
-                $query_insert3 = "INSERT INTO pilote (idper) VALUES (:id_personne)";
-                $stmt_insert3 = $pdo->prepare($query_insert3);
-                $stmt_insert3->bindParam(':id_personne', $id_personne);
-                $stmt_insert3->execute();
-                exit();
+        if($role==="Etudiant"){
+        $query_insert1 = "INSERT INTO etudiant (idper) VALUES (:id_personne)";
+        $stmt_insert1 = $pdo->prepare($query_insert1);
+        $stmt_insert1->bindParam(':id_personne', $id_personne);
+        $stmt_insert1->execute();
+        }else {
+        $query_insert2 = "INSERT INTO admin (idper) VALUES (:id_personne)";
+        $stmt_insert2 = $pdo->prepare($query_insert2);
+        $stmt_insert2->bindParam(':id_personne', $id_personne);
+        $stmt_insert2->execute();
         }
     }
 }

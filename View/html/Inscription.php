@@ -1,12 +1,10 @@
 <?php
 require_once'connexiondb.php';
-require_once '../../Controller/controlin.php';
+require_once 'controlin.php';
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["formValidated"]) && $_POST["formValidated"] == "1") {
   insertto($pdo);
 }
-session_start();
-$role=$_SESSION['role'];
-echo $role;
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -22,7 +20,7 @@ echo $role;
 
 <body>
     <header class="header1">
-        <a href="accueil.php">
+        <a href="https://www.youtube.com/watch?v=d_WjOBeLVn0&t=299s&ab_channel=EGO">
         <img src="../img/logopng.png" alt="Logo">
     </a>
     </header>
@@ -35,9 +33,7 @@ echo $role;
             <input type="text" name="prenom" placeholder="Votre Prenom" id="prenomI">
             <input type="hidden" name="formValidated" id="formValidated" value="0">
             <select name="role" id="roleSelect" class="select">
-                <?php if ($role !== 'pilote') { ?>
-                    <option value="pilote">Pilote</option>
-                <?php } ?>
+                <option value="pilote">Pilote</option>
                 <option value="etudiant">Étudiant</option>
             </select>
         </form>

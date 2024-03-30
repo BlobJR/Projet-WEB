@@ -1,8 +1,3 @@
-<?php
-require_once 'connexiondb.php';
-require_once '../../controller/controlcreaent.php';
-$secteurs=insertsecteur($pdo);
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,7 +10,7 @@ $secteurs=insertsecteur($pdo);
 </head>
 <body>
     <header class="header1">
-        <a href="accueil.php">
+        <a href="https://www.youtube.com/watch?v=d_WjOBeLVn0&t=299s&ab_channel=EGO">
         <img src="../img/logopng.png" alt="Logo">
     </a>
     </header>
@@ -24,13 +19,7 @@ $secteurs=insertsecteur($pdo);
         <form >
             <input type="text" placeholder="Intitulé de l'Offre" id="nomEntI">
             <input type="text" placeholder="Niveau Requis" id="lvlI">
-            <select name="secteur" id="secteurS" class="select">
-            <option value="">Choisissez une option</option>
-            <?php foreach ($secteurs as $secteur): ?>
-                
-            <option value="<?php echo $secteur['nom_secteur']; ?>"><?php echo $secteur['nom_secteur']; ?></option>
-            <?php endforeach; ?>
-            </select>
+            <input type="text" placeholder="Domaine " id="domaineI">
             <input type="text" placeholder="Nombre de places "id="nbrPlaceI">
             <button class="btn-53">
                Créer
