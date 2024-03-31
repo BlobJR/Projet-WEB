@@ -45,7 +45,7 @@ if (isset($_SESSION['role'])) {
       
       <button type="button" onclick="window.location.href = 'CréationEntreprise.php'">Créer une entreprise</button>
       <button type="button">Gérer une entreprise</button>
-      <button type="button">Créer une offre</button>
+      <button type="button"onclick="window.location.href = 'CréationOffre.php'">Créer une offre</button>
       <button type="button">Modifier une offre</button>
       <button type="button" onclick="window.location.href = 'Inscription.php'">Créer un compte étudiant</button>
       <button type="button">Modifier un compte étudiant</button>

@@ -7,10 +7,10 @@ if (isset($_SESSION['role'])) {
     $idper=$_SESSION['idper'];
     $id_admin=$_SESSION['id_admin'];
     $id_pil=$_SESSION['id_pil'];
-    echo $role;
-    echo $idper;
-    echo $id_admin;
-    echo $id_pil;
+    // echo $role;
+    // echo $idper;
+    // echo $id_admin;
+    // echo $id_pil;
 } else {
     echo "Le rôle n'est pas défini.";
 }
