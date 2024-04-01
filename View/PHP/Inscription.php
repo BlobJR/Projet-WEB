@@ -5,6 +5,7 @@ session_start();
 $role=$_SESSION['role'];
 $id_admin=$_SESSION['id_admin'];
 $id_pil=$_SESSION['id_pil'];
+$promotions=promo($pdo);
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["formValidated"]) && $_POST["formValidated"] == "1") {
   inscription($pdo,$id_pil,$id_admin);
 }
@@ -35,12 +36,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["formValidated"]) && $_
             <input type="text" name="nom" placeholder="Votre Nom" id="nomI">
             <input type="text" name="prenom" placeholder="Votre Prenom" id="prenomI">
             <input type="hidden" name="formValidated" id="formValidated" value="0">
-            <select name="role" id="roleSelect" class="select">
+            <select name="role" id="roleSelect" class="select" onchange="showHideSelect()">
                 <?php if ($role !== 'pilote') { ?>
                     <option value="pilote">Pilote</option>
                 <?php } ?>
                 <option value="etudiant">Étudiant</option>
             </select>
+            <select name="promotion" id="promotion" class="select" style="display: none;">
+                <?php foreach ($promotions as $promo): ?>
+                    <option value="<?php echo ($promo['nom_promo']); ?>"><?php echo ($promo['nom_promo']); ?></option>
+                <?php endforeach; ?>
+            </select>
+
         </form>
         <span id="mdpmsg" style="margin-bottom: 10vh;"></span>
         <span id="emailmsg" style="margin-bottom: 60vh;"></span>

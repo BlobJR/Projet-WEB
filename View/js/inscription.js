@@ -40,3 +40,13 @@ function verifmail(input){
         msgemail.textContent = "Adresse email invalide";
     }
 }
+function showHideSelect() {
+    var roleSelect = document.getElementById("roleSelect");
+    var promotion = document.getElementById("promotion");
+
+    if (roleSelect.value === "etudiant") {
+        promotion.style.display = "block";
+    } else {
+        promotion.style.display = "none";
+    }
+}

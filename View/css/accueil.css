@@ -79,6 +79,11 @@ body{
   border-radius: 35px;
 }
 
+.search {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
 .search input {
   width: 35%; 
@@ -86,39 +91,36 @@ body{
   font-weight: 600;
 }
 
-.search {
-  width: 35%; 
-  background-color: #dedede;
-  font-weight: 600;
+.search{
   border-radius: 35px;
   color: #000;
-  font-size: 16px;
-  margin: 3% auto; 
-  font-family: 'Josefin Sans';
-  padding: 14px 25px;
-}
-
-.search-bar {
-  width: 35%; 
-  background-color: #dedede;
-  font-weight: 600;
-  border-radius: 35px;
-  color: #000;
+  padding: 1.5%;
   font-size: 16px;
   margin: 3%;
   font-family: 'Josefin Sans';
   padding: 14px 25px;
 }
 
+.search::placeholder {
+  color: #000;
+  font-family: 'Josefin Sans';
+}
+
+.search-button img{
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 50px;
+  width: 50px; 
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
 
 .menus {
   display: flex;
-  flex-direction: column; /* Placez les menus déroulants en colonne */
-  align-items: center; /* Centrez les éléments horizontalement */
-}
-
-.menus select {
-  margin-top: 10px; /* Ajoutez un espacement entre chaque menu déroulant */
+  justify-content: space-around;
 }
 
 select {

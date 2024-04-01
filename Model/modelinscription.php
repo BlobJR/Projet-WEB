@@ -34,9 +34,18 @@ $mail=$_POST['mail'];
                 $stmt_insert2->execute();
                 exit();
             case "Etudiant":
-                $query_insert1 = "INSERT INTO etudiant (idper, id_pil, id_admin) VALUES (:id_personne, :id_pil, :id_admin)";
+                $nom_promo = $_POST['promotion'];
+                $query = "SELECT id_promo FROM promotions WHERE nom_promo = :nom_promo";
+                $stmt = $pdo->prepare($query);
+                $stmt->bindParam(':nom_promo', $nom_promo);
+                $stmt->execute();
+                $result = $stmt->fetch(PDO::FETCH_ASSOC);
+                $id_promo = $result['id_promo'];
+
+                $query_insert1 = "INSERT INTO etudiant (idper, id_pil, id_admin, id_promo) VALUES (:id_personne, :id_pil, :id_admin, :id_promo)";
                 $stmt_insert1 = $pdo->prepare($query_insert1);
                 $stmt_insert1->bindParam(':id_personne', $id_personne);
+                $stmt_insert1->bindParam(':id_promo', $id_promo);
                 if($id_pil=="NULL"){
                     $id_pil=null;
                     $stmt_insert1->bindParam(':id_pil',$id_pil, PDO::PARAM_NULL);
@@ -56,5 +65,12 @@ $mail=$_POST['mail'];
                 exit();
         }
     }
+}
+function getpromo($pdo){
+    $query="SELECT nom_promo FROM promotions ";
+    $stmt = $pdo->prepare($query);
+    $stmt->execute();
+    $result= $stmt->fetchAll(PDO::FETCH_ASSOC);;
+    return $result;
 }
 ?>

@@ -1,12 +1,7 @@
 <?php
-require_once '../../Model/modelacceuil.php';
+require_once'../../Controller/controlaccueil.php';
 require_once 'connexiondb.php';
-
-$offres = getoff($pdo);
-$villes = getVille($pdo);
-$secteurs = getsecteurs($pdo);
-$comp_requises = getcomp($pdo);
-$entreprises = getNomEntreprises($pdo); // Utilisation de la nouvelle fonction pour récupérer les noms des entreprises
+$offres=insertoff($pdo);
 ?>
 
 <!DOCTYPE html>
@@ -30,7 +25,7 @@ $entreprises = getNomEntreprises($pdo); // Utilisation de la nouvelle fonction p
             </a>
         </div>
         <div class="account">
-            <a class="account" href="dashboard.html">COMPTE</a>
+            <a class="account" href="Connexion.php">COMPTE</a>
         </div>
 
     </header>
@@ -38,64 +33,60 @@ $entreprises = getNomEntreprises($pdo); // Utilisation de la nouvelle fonction p
     <section class="container">
 
         <section class="top"> 
-        <section class="criteres">
-            <div class="search">
-                <form action="recherche.php" method="GET">
-                    <input placeholder="Recherche" class="search-bar" type="text" name="query"/>
+
+            <section class="criteres">
+            
+                <div class="search">
+                    <input placeholder="Recherche" class="search" type="text" />
                     <button type="submit" class="search-button">
-                        <img src="../img/loupe.png" alt="Recherche" style="height: 2vh; width: 2vw;"> <!-- Ajustez la taille directement ici -->
+                        <img src="../img/loupe.png" alt="Recherche">
                     </button>
-                </form>
-            </div>
-            </section>
-            <div class="menus"> <!-- Menus déroulants -->
-                <form action="recherche.php" method="GET">
-                    <select id="ville" name="ville">
-                        <option value="">Ville</option>
-                        <?php foreach ($villes as $nom_ville): ?>
-                            <option value="<?php echo $nom_ville; ?>"><?php echo $nom_ville; ?></option>
-                        <?php endforeach; ?>
+                </div>
+                
+                
+                <div class="menus">
+                    <select id="lieu" name="lieu">
+                        <option value="lieu">Lieu</option>
+                        <option value="ville">Ville</option>
+                        <option value="lyon">Lyon</option>
+                        <option value="marseille">Marseille</option>
+                        <option value="bordeaux">Bordeaux</option>
                     </select>
-                    <select id="secteur" name="secteur">
-                        <option value="">Secteur</option>
-                        <?php foreach ($secteurs as $secteur): ?>
-                            <option value="<?php echo $secteur; ?>"><?php echo $secteur; ?></option>
-                        <?php endforeach; ?>
+            
+                    <select id="domaine" name="domaine">
+                        <option value="domaine">Domaine</option>
+                        <option value="generaliste">Géneraliste</option>
+                        <option value="btp">BTP</option>
+                        <option value="sys">Systèmes embarqués</option>
                     </select>
+            
                     <select id="competences" name="competences">
-                        <option value="">Compétences</option>
-                        <?php foreach ($comp_requises as $comp): ?>
-                            <option value="<?php echo $comp; ?>"><?php echo $comp; ?></option>
-                        <?php endforeach; ?>
+                        <option value="competances">Compétences</option>
+                        <option value="html">HTML</option>
+                        <option value="css">CSS</option>
+                        <option value="javascript">JavaScript</option>
+                        <option value="python">Python</option>
                     </select>
-                    <select id="entreprises" name="entreprises"> <!-- Utilisation des noms des entreprises récupérés depuis la nouvelle fonction -->
-                        <option value="">Entreprises</option>
-                        <?php foreach ($entreprises as $entreprise): ?>
-                            <option value="<?php echo $entreprise; ?>"><?php echo $entreprise; ?></option>
-                        <?php endforeach; ?>
-                    </select>
-                </form>
-            </div>
+                </div>
+
+            </section>
         </section>
         
         <section class="bottom">
             <?php foreach ($offres as $offre_stage): ?>
                 <div class="offre">
-                    <a href="offres.php?id=<?php echo $offre_stage['id_offre']; ?>" class="offre-link">
-                        <div class="midle_content">
-                            <h1 class="intitule"><?php echo $offre_stage['intitule']; ?></h1>
-                            <p class="info">Nom de l'entreprise : <span class="nom_ent"><?php echo $entreprise[$offre_stage['id_entreprise']]; ?></span></p>
-                            <p class="info">Niveau requis du poste : <span class="niveau_requis"><?php echo $offre_stage['niveau_requis']; ?></span></p>
-                            <p class="info">Secteur du poste : <span class="secteur"><?php echo $offre_stage['nom_secteur']; ?></span></p>
-                            <p class="info">Nombres de places du poste : <span class="nbr_places"><?php echo $offre_stage['nbr_places']; ?></span></p>
-                            <p class="info">Compétences requises du poste : <span class="comp_requises"><?php echo $offre_stage['comp_requises']; ?></span></p>
-                        </div>
-                    </a>
+                <a href="offres.php?id=<?php echo $offre_stage['id_offre']; ?>" class="offre-link">
+                <div class="midle_content">
+                <h1 class="intitule"><?php echo $offre_stage['intitule']; ?></h1>
+                <p class="info">Niveau requis du poste : <span class="niveau_requis"><?php echo $offre_stage['niveau_requis']; ?></span></p>
+                <p class="info">Secteur du poste : <span class="secteur"><?php echo $offre_stage['nom_secteur']; ?></span></p>
+                <p class="info">Nombres de places du poste : <span class="nbr_places"><?php echo $offre_stage['nbr_places']; ?></span></p>
+                <p class="info">Compétences requises du poste : <span class="comp_requises"><?php echo $offre_stage['comp_requises']; ?></span></p>
+            </div>
+                </a>
                 </div>
             <?php endforeach; ?>
-        </section>
-
-        
+        </section>        
     </section>
 
 </body>
