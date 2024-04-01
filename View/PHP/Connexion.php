@@ -3,6 +3,7 @@ require_once'connexiondb.php';
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["formValidated"]) && $_POST["formValidated"] == "1") {
 require_once'../../Controller/controlconnexion.php';
 $result=insertco($pdo);
+if (!empty($result)){
 $role = $result['role'];
 $idper = $result['idper'];
 $id_admin=$result['id_admin'];
@@ -11,7 +12,8 @@ session_start();
 $_SESSION['role'] = $role; 
 $_SESSION['idper'] = $idper; 
 $_SESSION['id_admin'] = $id_admin; 
-$_SESSION['id_pil'] = $id_pil; 
+$_SESSION['id_pil'] = $id_pil;
+}
 } 
 ?>
 

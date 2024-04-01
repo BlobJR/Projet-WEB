@@ -1,12 +1,13 @@
 <?php
 require_once'connexiondb.php';
 require_once '../../Controller/controlin.php';
-if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["formValidated"]) && $_POST["formValidated"] == "1") {
-  insertto($pdo);
-}
 session_start();
 $role=$_SESSION['role'];
-echo $role;
+$id_admin=$_SESSION['id_admin'];
+$id_pil=$_SESSION['id_pil'];
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["formValidated"]) && $_POST["formValidated"] == "1") {
+  inscription($pdo,$id_pil,$id_admin);
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">

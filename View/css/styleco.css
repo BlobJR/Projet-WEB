@@ -57,13 +57,12 @@ box-shadow: inset 39px 39px 78px #b8b8b8,
   margin: auto;
   margin-bottom: 4vh;
   padding:2vh;
-  border-radius: 35px;
   border-style: solid;
   border-color: #131213;
   background-color: #131213;
   color: white; 
   font-weight: bold; 
-  border-radius: 71px;
+  border-radius: 5vh;
   position: relative;
   
 }
