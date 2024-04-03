@@ -63,7 +63,7 @@ body{
   width: 75vw;
   left: 50%;
   transform: translateX(-50%);
-  height: 88vh;
+  height: 80vh;
   background-color: #dedede;
   border-radius: 35px;
 }
@@ -74,9 +74,10 @@ body{
   flex-direction: column;
   left: 50%;
   transform: translateX(-50%);
-  height: 65vh;
+  max-height: 65vh; 
   width: 99%;
   border-radius: 35px;
+ 
 }
 
 .search {
@@ -121,11 +122,12 @@ body{
 .menus {
   display: flex;
   justify-content: space-around;
-  margin-top: 2vh;
+ 
 }
 .menus select{
   display: inline-block;
   margin-left: 4vw;
+  width: 50vw;
 }
 
 select {
@@ -147,20 +149,11 @@ select {
   flex-direction: column;
   align-items: center;
 }
-.offre button{
-  color: white;
-  background-color:#000;
-  border-radius: 4vw;
-  border-color: black;
- cursor: pointer;
- height: 5vh;
- width: 10vw;
-}
 
 .offre-link {
   display: flex;
   justify-content: space-between; 
-  width: 70%;
+  width: calc(100% - 1vw);
   max-width: 75%;
   padding: 15px;
   margin: 1vh;
