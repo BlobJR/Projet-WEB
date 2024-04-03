@@ -21,4 +21,15 @@ function getstatsP($pdo,$idper){
     $result0=$stmt0->fetch();
     return $result0;
 }
+function supprimerE($pdo,$idper){
+    $query = "DELETE FROM etudiant WHERE idper=:idper";
+    $stmt = $pdo->prepare($query);
+    $stmt->bindParam("idper", $idper);
+    $stmt->execute();
+    $query0 = "DELETE FROM personne WHERE idper=:idper";
+    $stmt0 = $pdo->prepare($query0);
+    $stmt0->bindParam("idper", $idper);
+    $stmt0->execute();
+    header("Location: rechercheE.php");
+}
 ?>

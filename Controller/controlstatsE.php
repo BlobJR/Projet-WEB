@@ -9,4 +9,7 @@ function statsP($pdo,$idper){
     $statsP=getstatsP($pdo,$idper);
     return $statsP;
 }
+function supprimer($pdo,$idper){
+    supprimerE($pdo,$idper);
+}
 ?>
