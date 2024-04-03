@@ -12,7 +12,7 @@ if (isset($_SESSION['role'])) {
     // echo $id_admin;
     // echo $id_pil;
 } else {
-    echo "Le rôle n'est pas défini.";
+    
 }
 $secteurs=insertsecteur($pdo);
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["formValidated"]) && $_POST["formValidated"] == "1") {

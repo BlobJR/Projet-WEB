@@ -1,11 +1,5 @@
 <?php
-function getstatsE($pdo,$id_etudiant){
-    $query = "SELECT idper FROM etudiant WHERE id_etudiant= :id_etudiant";
-    $stmt = $pdo->prepare($query);
-    $stmt->bindParam(':id_etudiant', $id_etudiant);
-    $stmt->execute();
-    $result=$stmt->fetch();
-    $idper=$result['idper'];
+function getstatsE($pdo,$idper){
     $query0="SELECT nom, prenom, email  FROM personne WHERE idper=:idper";
     $stmt0 = $pdo->prepare($query0);
     $stmt0->bindParam(':idper', $idper);
@@ -13,10 +7,10 @@ function getstatsE($pdo,$id_etudiant){
     $result0=$stmt0->fetch();
     return $result0;
 }
-function getstatsP($pdo,$id_etudiant){
-    $query = "SELECT id_promo FROM etudiant WHERE id_etudiant= :id_etudiant";
+function getstatsP($pdo,$idper){
+    $query = "SELECT id_promo FROM etudiant WHERE idper= :idper";
     $stmt = $pdo->prepare($query);
-    $stmt->bindParam(':id_etudiant', $id_etudiant);
+    $stmt->bindParam(':idper', $idper);
     $stmt->execute();
     $result=$stmt->fetch();
     $id_promo=$result['id_promo'];

@@ -1,12 +1,12 @@
 <?php
-function statsE($pdo,$id_etudiant){
+function statsE($pdo,$idper){
     require_once'../../model/modelstatsE.php';
-    $statsE=getstatsE($pdo,$id_etudiant);
+    $statsE=getstatsE($pdo,$idper);
     return $statsE;
 }
-function statsP($pdo,$id_etudiant){
+function statsP($pdo,$idper){
     require_once'../../model/modelstatsE.php';
-    $statsP=getstatsP($pdo,$id_etudiant);
+    $statsP=getstatsP($pdo,$idper);
     return $statsP;
 }
 ?>

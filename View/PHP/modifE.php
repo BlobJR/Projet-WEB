@@ -1,17 +1,3 @@
-<?php
-require_once'connexiondb.php';
-session_start();
-$idper=$_GET['idper'];
-$id_etudiant=1;
-require_once'../../Controller/controlstatsE.php';
-$statsE=statsE($pdo,$idper);
-$nom=$statsE['nom'];
-$prenom=$statsE['prenom'];
-$email=$statsE['email'];
-$statsP=statsP($pdo,$idper);
-$nom_promo=$statsP['nom_promo'];
-$niveau_diplome=$statsP['niveau_diplome'];
-?>
 <!DOCTYPE html> 
 <html lang="en">
 <head>
@@ -52,8 +38,6 @@ $niveau_diplome=$statsP['niveau_diplome'];
     <span><?php echo $email ?></span>
       <p>Promotions actuellement occupée </p>
       <span><?php echo $nom_promo," ", "Niveau: ",$niveau_diplome?></span>
-      <button>Modifier le compte</button>
-      <button>Supprimer le compte</button>
     </header>
 </body>
 </html>

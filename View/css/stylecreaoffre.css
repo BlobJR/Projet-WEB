@@ -41,7 +41,7 @@ body{
 
 }
 .header2 form{
-  margin-top: 25vh;
+  margin-top: 30vh;
 }
 .header2 input{
   display:flex;
@@ -119,8 +119,8 @@ body{
     Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif,
     Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
   font-size: 100%;
-  margin-top: 10vh;
-  margin-left: 4vw;
+  margin-top: 2vh;
+  margin-left: 3.5vw;
   border: 1px solid;
   border-radius: 999px;
   box-sizing: border-box;
