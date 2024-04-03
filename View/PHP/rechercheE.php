@@ -72,7 +72,7 @@ if (isset($_GET['idper']) || isset($_GET['nom']) || isset($_GET['prenom']) || is
                         <option value="<?php echo $etudiants['email']; ?>"><?php echo $etudiants['email']; ?></option>
                     <?php endforeach; ?>
                 </select>
-                <input type="submit" value="Rechercher" style="margin-left:4vw;border-radius:4vw;heigth:5vh;padding:1%;cursor:pointer;">
+                <input type="submit" value="Rechercher" style="margin-left:4vw;border-radius:4vw;height:5vh;padding:1%;cursor:pointer;">
                 </form>
             </div>
         </section>

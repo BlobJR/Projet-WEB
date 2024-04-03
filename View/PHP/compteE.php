@@ -1,3 +1,8 @@
+<?php
+session_start();
+$role = $_SESSION['role'];
+$idper=$_SESSION['idper']; 
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,17 +16,17 @@
 <body>
   <header class="header1">
     <div class="header11">
-        <a href="https://www.youtube.com/watch?v=d_WjOBeLVn0&t=299s&ab_channel=EGO">
+        <a href="Connexion.php">
             <img src="../img/white_back_arrow_logo.png" alt="Logo">
         </a>
     </div>
     <div class="header12">
-        <a href="https://www.youtube.com/watch?v=d_WjOBeLVn0&t=299s&ab_channel=EGO">
+        <a href="accueil.php">
             <img src="../img/logopng.png" alt="Logo">
           </a>
     </div>
     <div class="header13">
-      <a href="https://www.youtube.com/watch?v=d_WjOBeLVn0&t=299s&ab_channel=EGO">
+      <a href="#">
         <img src="../img/compte.png" alt="Logo">
       </a>
     </div>
@@ -35,7 +40,7 @@
       
       <button type="button">Ajouter une offre a la wishlist</button>
       <button type="button" onclick="window.location.href = 'Connexion.php'">Se déconnecter</button>
-      
+      <button type="button" onclick="window.location.href = 'rechercheEnt.php'">Entreprises</button>
     </header>
 </body>
 </html> 

@@ -2,22 +2,10 @@
 require_once'connexiondb.php';
 require_once'../../controller/controlstatsEnt.php';
 session_start();
-$id_entreprise=1;
+$id_entreprise=$_GET['id_entreprise'];
 $statsEnt=statsEnt($pdo,$id_entreprise);
 $nom_ent=$statsEnt['nom_ent'];
-$statsEntAA=statsEntA( $pdo,$id_entreprise);
-$id_adr=$statsEntAA['id_adr'];
-$statsEntA=$statsEntAA['result'];
-$numero_rue=$statsEntA['numero_rue'];
-$nom_rue=$statsEntA['nom_rue'];
-$nom_rue = str_replace('?', 'é', $nom_rue);
-$statsEntV=statsEntV( $pdo,$id_adr);
-$ville=$statsEntV['nom_ville'];
-$code_postal=$statsEntV['code_postal'];
-$statsEntSA=statsEntS( $pdo,$id_entreprise);
-$date=$statsEntSA['date'];
-$statsEntS=$statsEntSA['secteur'];
-$nom_secteur=$statsEntS['nom_secteur'];
+
 ?>
 <!DOCTYPE html> 
 <html lang="en">
@@ -38,6 +26,7 @@ $nom_secteur=$statsEntS['nom_secteur'];
             <img src="../img/white_back_arrow_logo.png" alt="Logo">
         </a>
     </div>
+
     <div class="header12">
         <a href="https://www.youtube.com/watch?v=d_WjOBeLVn0&t=299s&ab_channel=EGO">
             <img src="../img/logopng.png" alt="Logo">
@@ -56,11 +45,14 @@ $nom_secteur=$statsEntS['nom_secteur'];
     </header>
     <header class="header3">
     <p>Adresse renseignée</p>
-    <span><?php echo $numero_rue," ",$nom_rue," ",$ville," ",$code_postal ?></span>
+    <span><?php echo $statsEnt['numero_rue']," ",$statsEnt['nom_rue']," ",$statsEnt['nom_ville']," ",$statsEnt['code_postal'] ?></span>
       <p>Date de création</p>
-      <span><?php echo $date ?></span>
+      <span><?php echo $statsEnt['date_creation'] ?></span>
       <p>Secteur</p>
-      <span><?php echo $nom_secteur?></span>
+      <span><?php echo $statsEnt['nom_secteur']?></span>
+      <button onclick="validM()">Modifier le compte</button>
+      <br>
+      <button onclick="validS()">Supprimer le compte</button>
     </header>
 </body>
 </html>

@@ -1,53 +1,23 @@
 <?php
-function getstatsEnt($pdo,$id_entreprise){
-    $query = "SELECT nom_ent FROM entreprises WHERE id_entreprise= :id_entreprise";
+function getStatsEnt($pdo, $id_entreprise) {
+    $query = "SELECT entreprises.nom_ent, adresse.numero_rue, adresse.nom_rue, ville.nom_ville, ville.code_postal, possede.date_creation, secteur.nom_secteur
+              FROM entreprises
+              JOIN adresse ON entreprises.id_adr = adresse.id_adr
+              JOIN ville ON adresse.id_ville = ville.id_ville
+              JOIN possede ON entreprises.id_entreprise = possede.id_entreprise
+              JOIN secteur ON possede.id_secteur = secteur.id_secteur
+              WHERE entreprises.id_entreprise = :id_entreprise";
+
     $stmt = $pdo->prepare($query);
     $stmt->bindParam(':id_entreprise', $id_entreprise);
     $stmt->execute();
-    $result=$stmt->fetch();
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    
+    if (strpos($result['nom_rue'], '?') !== false) {
+        $result['nom_rue'] = str_replace('?', 'é', $result['nom_rue']);
+    }
+
     return $result;
-}
-function getstatsEntA($pdo,$id_entreprise){
-    $query = "SELECT id_adr FROM entreprises WHERE id_entreprise= :id_entreprise";
-    $stmt = $pdo->prepare($query);
-    $stmt->bindParam(':id_entreprise', $id_entreprise);
-    $stmt->execute();
-    $result=$stmt->fetch();
-    $id_adr=$result['id_adr'];
-    $query0 = "SELECT numero_rue, nom_rue FROM adresse WHERE id_adr= :id_adr";
-    $stmt0 = $pdo->prepare($query0);
-    $stmt0->bindParam(':id_adr', $id_adr);
-    $stmt0->execute();
-    $result0=$stmt0->fetch();
-    return array('id_adr'=>$id_adr,'result'=>$result0);
-}
-function getstatsEntV( $pdo,$id_adr){
-    $query = "SELECT id_ville FROM adresse WHERE id_adr= :id_adr";
-    $stmt = $pdo->prepare($query);
-    $stmt->bindParam(':id_adr', $id_adr);
-    $stmt->execute();
-    $result=$stmt->fetch();
-    $id_ville=$result['id_ville'];
-    $query0 = "SELECT nom_ville, code_postal FROM ville WHERE id_ville= :id_ville";
-    $stmt0 = $pdo->prepare($query0);
-    $stmt0->bindParam(':id_ville', $id_ville);
-    $stmt0->execute();
-    $result0=$stmt0->fetch();
-    return  $result0;
-}
-function getstatsEntS($pdo,$id_entreprise){
-    $query = "SELECT id_secteur,date_creation FROM possede WHERE id_entreprise= :id_entreprise";
-    $stmt = $pdo->prepare($query);
-    $stmt->bindParam(':id_entreprise', $id_entreprise);
-    $stmt->execute();
-    $result=$stmt->fetch();
-    $id_secteur=$result['id_secteur'];
-    $date=$result['date_creation'];
-    $query0 = "SELECT nom_secteur FROM secteur WHERE id_secteur= :id_secteur";
-    $stmt0 = $pdo->prepare($query0);
-    $stmt0->bindParam(':id_secteur', $id_secteur);
-    $stmt0->execute();
-    $result0=$stmt0->fetch();
-    return array('date'=>$date,'secteur'=>$result0);
 }
 ?>

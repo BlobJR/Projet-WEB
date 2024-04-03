@@ -25,7 +25,13 @@ try {
                        
                    case "Etudiant":
                        header("Location:compteE.php");
-                       
+                       $result = array(
+                        'id_admin' => "NULL",
+                        'role' => $role,
+                        'idper' => $idper,
+                        'id_pil'=>"NULL"
+                        );
+                        return $result;
                        exit();
                        
                    case "pilote":
