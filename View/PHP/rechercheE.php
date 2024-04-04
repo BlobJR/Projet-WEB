@@ -2,14 +2,24 @@
 require_once '../../controller/controlrechercheE.php';
 require_once 'connexiondb.php';
 session_start();
-if (isset($_GET['idper']) || isset($_GET['nom']) || isset($_GET['prenom']) || isset($_GET['email'])) {
-    $idper = isset($_GET['idper']) ? $_GET['idper'] : null;
-    $nom = isset($_GET['nom']) ? $_GET['nom'] : null;
-    $prenom = isset($_GET['prenom']) ? $_GET['prenom'] : null;
-    $email = isset($_GET['email']) ? $_GET['email'] : null;
-    $etudiant = insertER($pdo,$email,$nom,$prenom,$idper);
-} else {
-    $etudiant = insertE($pdo);
+if (isset($_POST['idper']) || isset($_POST['nom']) || isset($_POST['prenom']) || isset($_POST['email'])) {
+    $idper = isset($_POST['idper']) ? $_POST['idper'] : null;
+    $nom = isset($_POST['nom']) ? $_POST['nom'] : null;
+    $prenom = isset($_POST['prenom']) ? $_POST['prenom'] : null;
+    $email = isset($_POST['email']) ? $_POST['email'] : null;
+    
+    $_SESSION['idper'] = $idper;
+    $_SESSION['nom'] = $nom;
+    $_SESSION['prenom'] = $prenom;
+    $_SESSION['email'] = $email;
+    
+    $etudiant = insertER($pdo, $email, $nom, $prenom, $idper); 
+    }else {
+        $etudiant = insertE($pdo);
+    }
+if(isset($_POST['modifierBtn']) && isset($_POST['idper'])) {
+        $_SESSION['idper'] = $_POST['idper'];
+        header("Location: statsE.php");
 }
 $url=$_SESSION['url'];
  
@@ -31,7 +41,6 @@ $url=$_SESSION['url'];
 
     
     <header class="header">        
-
         <div class="logo">
             <a href="<?php echo $url; ?>">
                 <img src="../img/logopngcrop.png" alt="Logo">
@@ -48,7 +57,7 @@ $url=$_SESSION['url'];
         <section class="top"> 
        
             <div class="menus"> <!-- Menus déroulants -->
-                <form action="rechercheE.php" method="GET">
+                <form action="rechercheE.php" method="POST">
                 <select id="nom" name="nom" >
                     <option value="">Nom</option>
                     <?php foreach ($etudiant  as $etudiants): ?>
@@ -79,17 +88,19 @@ $url=$_SESSION['url'];
         <section class="bottom">
         <?php foreach ($etudiant as $etudiants): ?>
                 <div class="offre">
-                <a href="rechercheE.php?idper=<?php echo $etudiants['idper']; ?>" class="offre-link" >
+                <a href="rechercheE.php?" class="offre-link" >
                         <div class="midle_content" >
                             <h1 class="intitule">Etudiant</h1>
-                            <input type="hidden" name="idper" value="<?php echo $etudiants['idper']; ?>">
                             <p class="info">Nom de l'étudiant :  <?php echo $etudiants['nom']; ?></p>
                             <p class="info">Prenom de l'étudiant :  <?php echo $etudiants['prenom'] ?></p>
                             <p class="info">email:  <?php echo $etudiants['email']; ?></p>
                         </div>
                        
                     </a>
-                    <button type="button" onclick="window.location.href = 'statsE.php?idper=' +<?php echo $etudiants['idper']?>;">modifier</button>
+                    <form method="POST" >
+                        <input type="hidden" name="idper" value="<?php echo $etudiants['idper']; ?>">
+                        <button type="submit" name="modifierBtn">modifier</button>
+                    </form>
                 </div>
             <?php endforeach; ?>
         </section>

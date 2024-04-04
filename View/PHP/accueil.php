@@ -1,12 +1,8 @@
 <?php
-require_once '../../Model/modelacceuil.php';
+require_once '../../controller/controlaccueil.php';
 require_once 'connexiondb.php';
 session_start();
-$offres = getoff($pdo);
-$villes = getVille($pdo);
-$secteurs = getsecteurs($pdo);
-$comp_requises = getcomp($pdo);
-$entreprises = getNomEntreprises($pdo); 
+$offres=insertoff($pdo);
 $url=$_SESSION['url'];
 ?>
 
@@ -50,26 +46,32 @@ $url=$_SESSION['url'];
                 <form action="recherche.php" method="GET">
                     <select id="ville" name="ville">
                         <option value="">Ville</option>
-                        <?php foreach ($villes as $nom_ville): ?>
-                            <option value="<?php echo $nom_ville; ?>"><?php echo $nom_ville; ?></option>
-                        <?php endforeach; ?>
+                        <?php 
+                        $villes = array();
+                            foreach ($offres as $offre_stage) {
+                                if (!isset($villes[$offre_stage['nom_ville']])) {
+                                    echo '<option value="' . $offre_stage['nom_ville'] . '">' . $offre_stage['nom_ville'] . '</option>';
+                                    $villes[$offre_stage['nom_ville']] = true;
+                                }
+                    }
+                    ?>
                     </select>
                     <select id="secteur" name="secteur">
                         <option value="">Secteur</option>
-                        <?php foreach ($secteurs as $secteur): ?>
-                            <option value="<?php echo $secteur; ?>"><?php echo $secteur; ?></option>
+                        <?php foreach ($offres as $offre_stage): ?>
+                            <option value="<?php echo $offre_stage['nom_secteur']; ?>"><?php echo $offre_stage['nom_secteur']; ?></option>
                         <?php endforeach; ?>
                     </select>
                     <select id="competences" name="competences">
                         <option value="">Compétences</option>
-                        <?php foreach ($comp_requises as $comp): ?>
-                            <option value="<?php echo $comp; ?>"><?php echo $comp; ?></option>
+                        <?php foreach ($offres as $offre_stage): ?>
+                            <option value="<?php echo $offre_stage['comp_requises']; ?>"><?php echo $offre_stage['comp_requises']; ?></option>
                         <?php endforeach; ?>
                     </select>
                     <select id="entreprises" name="entreprises"> <!-- Utilisation des noms des entreprises récupérés depuis la nouvelle fonction -->
                         <option value="">Entreprises</option>
-                        <?php foreach ($entreprises as $entreprise): ?>
-                            <option value="<?php echo $entreprise; ?>"><?php echo $entreprise; ?></option>
+                        <?php foreach ($offres as $offre_stage): ?>
+                            <option value="<?php echo $offre_stage['nom_ent']; ?>"><?php echo $offre_stage['nom_ent']; ?></option>
                         <?php endforeach; ?>
                     </select>
                 </form>
@@ -82,7 +84,7 @@ $url=$_SESSION['url'];
                     <a href="accueil.php?id=<?php echo $offre_stage['id_offre']; ?>" class="offre-link">
                         <div class="midle_content">
                             <h1 class="intitule"><?php echo $offre_stage['intitule']; ?></h1>
-                            <p class="info">Nom de l'entreprise : <span class="nom_ent"><?php echo $entreprise ?></span></p>
+                            <p class="info">Nom de l'entreprise : <span class="nom_ent"><?php echo $offre_stage['nom_ent'] ?></span></p>
                             <p class="info">Niveau requis du poste : <span class="niveau_requis"><?php echo $offre_stage['niveau_requis']; ?></span></p>
                             <p class="info">Secteur du poste : <span class="secteur"><?php echo $offre_stage['nom_secteur']; ?></span></p>
                             <p class="info">Nombres de places du poste : <span class="nbr_places"><?php echo $offre_stage['nbr_places']; ?></span></p>

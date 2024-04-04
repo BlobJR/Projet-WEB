@@ -1,8 +1,7 @@
 <?php
 require_once'connexiondb.php';
 session_start();
-$idper=$_GET['idper'];
-$_SESSION['idper']=$idper;
+$idper=$_SESSION['idper'];
 require_once'../../Controller/controlstatsP.php';
 $statsP=statsP($pdo,$idper);
 $statsPE=statsPE($pdo,$idper);

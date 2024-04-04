@@ -3,16 +3,25 @@ require_once '../../controller/controlrechercheP.php';
 require_once 'connexiondb.php';
 session_start();
 $url=$_SESSION['url'];
-if (isset($_GET['idper']) || isset($_GET['nom']) || isset($_GET['prenom']) || isset($_GET['email'])) {
-    $idper = isset($_GET['idper']) ? $_GET['idper'] : null;
-    $nom = isset($_GET['nom']) ? $_GET['nom'] : null;
-    $prenom = isset($_GET['prenom']) ? $_GET['prenom'] : null;
-    $email = isset($_GET['email']) ? $_GET['email'] : null;
-    $pilote = piloteER($pdo,$email,$nom,$prenom,$idper);
-} else {
-    $pilote = pilote($pdo);
+if (isset($_POST['idper']) || isset($_POST['nom']) || isset($_POST['prenom']) || isset($_POST['email'])) {
+    $idper = isset($_POST['idper']) ? $_POST['idper'] : null;
+    $nom = isset($_POST['nom']) ? $_POST['nom'] : null;
+    $prenom = isset($_POST['prenom']) ? $_POST['prenom'] : null;
+    $email = isset($_POST['email']) ? $_POST['email'] : null;
+    
+    $_SESSION['idper'] = $idper;
+    $_SESSION['nom'] = $nom;
+    $_SESSION['prenom'] = $prenom;
+    $_SESSION['email'] = $email;
+    
+    $pilote = piloteER($pdo, $email, $nom, $prenom, $idper); 
+    }else {
+        $pilote = pilote($pdo);
+    }
+if(isset($_POST['modifierBtn']) && isset($_POST['idper'])) {
+        $_SESSION['idper'] = $_POST['idper'];
+        header("Location: statsP.php");
 }
-
 
  
     
@@ -24,7 +33,7 @@ if (isset($_GET['idper']) || isset($_GET['nom']) || isset($_GET['prenom']) || is
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LightweightJobs</title>
+    <title>l</title>
     <link rel="stylesheet" href="../css/accueil.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600&display=swap">
 </head>
@@ -50,7 +59,7 @@ if (isset($_GET['idper']) || isset($_GET['nom']) || isset($_GET['prenom']) || is
         <section class="top"> 
        
             <div class="menus"> <!-- Menus déroulants -->
-                <form action="recherchep.php" method="GET">
+                <form action="rechercheP.php" method="POST">
                 <select id="nom" name="nom" >
                     <option value="">Nom</option>
                     <?php foreach ($pilote  as $pilotes): ?>
@@ -81,17 +90,19 @@ if (isset($_GET['idper']) || isset($_GET['nom']) || isset($_GET['prenom']) || is
         <section class="bottom">
         <?php foreach ($pilote as $pilotes): ?>
                 <div class="offre">
-                <a href="rechercheP.php?idper=<?php echo $pilotes['idper']; ?>" class="offre-link" >
+                <a href="rechercheP.php?" class="offre-link" >
                         <div class="midle_content" >
                             <h1 class="intitule">Pilotes</h1>
-                            <input type="hidden" name="idper" value="<?php echo $pilotes['idper']; ?>">
                             <p class="info">Nom du Pilote :  <?php echo $pilotes['nom']; ?></p>
                             <p class="info">Prenom du pilote :  <?php echo $pilotes['prenom'] ?></p>
                             <p class="info">email:  <?php echo $pilotes['email']; ?></p>
                         </div>
                        
                     </a>
-                    <button type="button" onclick="window.location.href = 'statsP.php?idper=' +<?php echo $pilotes['idper']?>;">modifier</button>
+                    <form method="POST" >
+                        <input type="hidden" name="idper" value="<?php echo $pilotes['idper']; ?>">
+                        <button type="submit" name="modifierBtn">modifier</button>
+                    </form>
                 </div>
             <?php endforeach; ?>
         </section>

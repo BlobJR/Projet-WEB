@@ -1,9 +1,9 @@
 <?php
 require_once'connexiondb.php';
 session_start();
-$idper=$_GET['idper'];
+$idper=$_SESSION['idper'];
+
 $url=$_SESSION['url'];
-$_SESSION['idper']=$idper;
 require_once'../../Controller/controlstatsE.php';
 $statsE=statsE($pdo,$idper);
 $nom=$statsE['nom'];
@@ -25,7 +25,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["Supprimer"]) && $_POST
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/stats.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600&display=swap">
-    <title>Connexion</title>
+    <title>Statistiques</title>
     <link rel="icon" href="../img/capsule_w.png" type="image/x-icon">
     <script src="../js/statsE.js"></script>
 </head>

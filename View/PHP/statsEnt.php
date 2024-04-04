@@ -2,9 +2,8 @@
 require_once'connexiondb.php';
 require_once'../../controller/controlstatsEnt.php';
 session_start();
-$id_entreprise=$_GET['id_entreprise'];
+$id_entreprise=$_SESSION['id_entreprise'];
 $url=$_SESSION['url'];
-$_SESSION['id_entreprise']=$id_entreprise;
 $statsEnt=statsEnt($pdo,$id_entreprise);
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["Supprimer"]) && $_POST["Supprimer"] == "1") {
  
