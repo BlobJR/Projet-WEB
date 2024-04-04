@@ -20,7 +20,7 @@ if (isset($_SESSION['role'])) {
 <body>
   <header class="header1">
     <div class="header11">
-        <a href="https://www.youtube.com/watch?v=d_WjOBeLVn0&t=299s&ab_channel=EGO">
+        <a href="Connexion.php">
         <img src="../img/white_back_arrow_logo.png" alt="Logo">
         </a>
     </div>
@@ -30,7 +30,7 @@ if (isset($_SESSION['role'])) {
           </a>
     </div>
     <div class="header13">
-      <a href="https://www.youtube.com/watch?v=d_WjOBeLVn0&t=299s&ab_channel=EGO">
+      <a href="#">
         <img src="../img/compte.png" alt="Logo">
       </a>
     </div>
@@ -50,7 +50,7 @@ if (isset($_SESSION['role'])) {
       <button type="button" onclick="window.location.href = 'Inscription.php'">Créer un compte étudiant</button>
       <button type="button" onclick="window.location.href = 'rechercheE.php'">Modifier un compte étudiant</button>
       <button type="button" onclick="window.location.href = 'Inscription.php'">Créer un compte Pilote</button>
-      <button type="button">Modifier un compte Pilote</button>
+      <button type="button" onclick="window.location.href = 'rechercheP.php'">Modifier un compte Pilote</button>
     </header>
 </body>
 </html> 

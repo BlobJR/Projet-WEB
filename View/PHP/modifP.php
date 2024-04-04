@@ -1,8 +1,7 @@
 <?php
 require_once'connexiondb.php';
-require_once '../../Controller/controlmodifE.php';
+require_once '../../Controller/controlmodifP.php';
 session_start();
-$promotions=promotion($pdo);
 $url=$_SESSION['url'];
 $idper=$_SESSION['idper'];
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["formValidated"]) && $_POST["formValidated"] == "1") {
@@ -35,11 +34,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["formValidated"]) && $_
             <input type="text" name="nom" placeholder="Votre Nom" id="nomI">
             <input type="text" name="prenom" placeholder="Votre Prenom" id="prenomI">
             <input type="hidden" name="formValidated" id="formValidated" value="0">
-            <select name="promotion" id="promotion" class="select">
-                <?php foreach ($promotions as $promo): ?>
-                    <option value="<?php echo ($promo['nom_promo']); ?>"><?php echo ($promo['nom_promo']); ?></option>
-                <?php endforeach; ?>
-            </select>
+            
 
         </form>
         <span id="mdpmsg" style="margin-bottom: 10vh;"></span>

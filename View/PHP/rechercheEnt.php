@@ -37,12 +37,12 @@ if (isset($_GET['id_entreprise']) || isset($_GET['nom_ent']) || isset($_GET['vil
     <header class="header">        
 
         <div class="logo">
-            <a href="indexnv.html">
+            <a href="<?php echo $url; ?>">
                 <img src="../img/logopngcrop.png" alt="Logo">
             </a>
         </div>
         <div class="account">
-            <a class="account" href="dashboard.html">COMPTE</a>
+            <a class="account" href="<?php echo $url; ?>">COMPTE</a>
         </div>
 
     </header>

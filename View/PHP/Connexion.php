@@ -31,7 +31,7 @@ $_SESSION['id_pil'] = $id_pil;
 
 <body>
     <header class="header1">
-        <a href="https://www.youtube.com/watch?v=d_WjOBeLVn0&t=299s&ab_channel=EGO">
+        <a href="#">
         <img src="../img/logopng.png" alt="Logo">
     </a>
     </header>

@@ -3,8 +3,13 @@ require_once'connexiondb.php';
 require_once'../../controller/controlstatsEnt.php';
 session_start();
 $id_entreprise=$_GET['id_entreprise'];
+$url=$_SESSION['url'];
+$_SESSION['id_entreprise']=$id_entreprise;
 $statsEnt=statsEnt($pdo,$id_entreprise);
-$nom_ent=$statsEnt['nom_ent'];
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["Supprimer"]) && $_POST["Supprimer"] == "1") {
+ 
+  supprimer($pdo,$id_entreprise);
+}
 
 ?>
 <!DOCTYPE html> 
@@ -16,32 +21,36 @@ $nom_ent=$statsEnt['nom_ent'];
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600&display=swap">
     <title>Statistiques</title>
     <link rel="icon" href="../img/capsule_w.png" type="image/x-icon">
-    <script src="../js/Connexion.js"></script>
+    <script src="../js/statsEnt.js"></script>
 </head>
 
 <body>
   <header class="header1">
     <div class="header11">
-        <a href="https://www.youtube.com/watch?v=d_WjOBeLVn0&t=299s&ab_channel=EGO">
+        <a href="rechercheEnt.php">
             <img src="../img/white_back_arrow_logo.png" alt="Logo">
         </a>
     </div>
 
     <div class="header12">
-        <a href="https://www.youtube.com/watch?v=d_WjOBeLVn0&t=299s&ab_channel=EGO">
+        <a href="accueil.php">
             <img src="../img/logopng.png" alt="Logo">
           </a>
     </div>
     <div class="header13">
-      <a href="https://www.youtube.com/watch?v=d_WjOBeLVn0&t=299s&ab_channel=EGO">
+      <a href="<?php echo $url; ?>">
         <img src="../img/compte.png" alt="Logo">
       </a>
     </div>
   </header>
     <header class="header2">
-        <img src="../img/2354573.png" alt="Logo">
+    <form method="POST" id="MS">
+        <img src="../img/4091450.png" alt="Logo">
       
-      <p><?php echo $nom_ent ?></p>
+      <p><?php echo $statsEnt['nom_ent'] ?></p>
+      
+        <input type="hidden" name="Supprimer" id="Supprimer"value="0">
+      </form>
     </header>
     <header class="header3">
     <p>Adresse renseignée</p>
@@ -50,9 +59,9 @@ $nom_ent=$statsEnt['nom_ent'];
       <span><?php echo $statsEnt['date_creation'] ?></span>
       <p>Secteur</p>
       <span><?php echo $statsEnt['nom_secteur']?></span>
-      <button onclick="validM()">Modifier le compte</button>
+      <button onclick="validM()">Modifier l'entreprise</button>
       <br>
-      <button onclick="validS()">Supprimer le compte</button>
+      <button onclick="validS()">Supprimer l'entreprise'</button>
     </header>
 </body>
 </html>

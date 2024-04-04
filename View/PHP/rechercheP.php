@@ -1,23 +1,19 @@
 <?php
-require_once '../../controller/controlrechercheE.php';
+require_once '../../controller/controlrechercheP.php';
 require_once 'connexiondb.php';
 session_start();
+$url=$_SESSION['url'];
 if (isset($_GET['idper']) || isset($_GET['nom']) || isset($_GET['prenom']) || isset($_GET['email'])) {
     $idper = isset($_GET['idper']) ? $_GET['idper'] : null;
     $nom = isset($_GET['nom']) ? $_GET['nom'] : null;
     $prenom = isset($_GET['prenom']) ? $_GET['prenom'] : null;
     $email = isset($_GET['email']) ? $_GET['email'] : null;
-    $etudiant = insertER($pdo,$email,$nom,$prenom,$idper);
+    $pilote = piloteER($pdo,$email,$nom,$prenom,$idper);
 } else {
-    $etudiant = insertE($pdo);
+    $pilote = pilote($pdo);
 }
-$role=$_SESSION['role'];
-if ($role === 'Admin') {
-    $url = 'compteA.php';
-} elseif ($role === 'pilote') {
-    $url = 'compteP.php';
-} 
-$_SESSION['url']=$url;
+
+
  
     
 
@@ -44,7 +40,7 @@ $_SESSION['url']=$url;
             </a>
         </div>
         <div class="account">
-        <a href="<?php echo $url; ?>">COMPTE</a>
+            <a class="account" href="<?php echo $url; ?>">COMPTE</a>
         </div>
 
     </header>
@@ -54,27 +50,27 @@ $_SESSION['url']=$url;
         <section class="top"> 
        
             <div class="menus"> <!-- Menus déroulants -->
-                <form action="rechercheE.php" method="GET">
+                <form action="recherchep.php" method="GET">
                 <select id="nom" name="nom" >
                     <option value="">Nom</option>
-                    <?php foreach ($etudiant  as $etudiants): ?>
-                        <option value="<?php echo $etudiants['nom']; ?>"><?php echo $etudiants['nom']; ?></option>
+                    <?php foreach ($pilote  as $pilotes): ?>
+                        <option value="<?php echo $pilotes['nom']; ?>"><?php echo $pilotes['nom']; ?></option>
                     <?php endforeach; ?>
                 </select>
 
                 
                 <select id="prenom" name="prenom">
                     <option value="">Prénom</option>
-                    <?php foreach ($etudiant as $etudiants): ?>
-                        <option value="<?php echo $etudiants['prenom']; ?>"><?php echo $etudiants['prenom']; ?></option>
+                    <?php foreach ($pilote as $pilotes): ?>
+                        <option value="<?php echo $pilotes['prenom']; ?>"><?php echo $pilotes['prenom']; ?></option>
                     <?php endforeach; ?>
                 </select>
 
                
                 <select id="email" name="email">
                     <option value="">Adresse e-mail</option>
-                    <?php foreach ($etudiant as $etudiants): ?>
-                        <option value="<?php echo $etudiants['email']; ?>"><?php echo $etudiants['email']; ?></option>
+                    <?php foreach ($pilote as $pilotes): ?>
+                        <option value="<?php echo $pilotes['email']; ?>"><?php echo $pilotes['email']; ?></option>
                     <?php endforeach; ?>
                 </select>
                 <input type="submit" value="Rechercher" style="margin-left:4vw;border-radius:4vw;height:5vh;padding:1%;cursor:pointer;">
@@ -83,19 +79,19 @@ $_SESSION['url']=$url;
         </section>
         
         <section class="bottom">
-        <?php foreach ($etudiant as $etudiants): ?>
+        <?php foreach ($pilote as $pilotes): ?>
                 <div class="offre">
-                <a href="rechercheE.php?idper=<?php echo $etudiants['idper']; ?>" class="offre-link" >
+                <a href="rechercheP.php?idper=<?php echo $pilotes['idper']; ?>" class="offre-link" >
                         <div class="midle_content" >
-                            <h1 class="intitule">Etudiant</h1>
-                            <input type="hidden" name="idper" value="<?php echo $etudiants['idper']; ?>">
-                            <p class="info">Nom de l'étudiant :  <?php echo $etudiants['nom']; ?></p>
-                            <p class="info">Prenom de l'étudiant :  <?php echo $etudiants['prenom'] ?></p>
-                            <p class="info">email:  <?php echo $etudiants['email']; ?></p>
+                            <h1 class="intitule">Pilotes</h1>
+                            <input type="hidden" name="idper" value="<?php echo $pilotes['idper']; ?>">
+                            <p class="info">Nom du Pilote :  <?php echo $pilotes['nom']; ?></p>
+                            <p class="info">Prenom du pilote :  <?php echo $pilotes['prenom'] ?></p>
+                            <p class="info">email:  <?php echo $pilotes['email']; ?></p>
                         </div>
                        
                     </a>
-                    <button type="button" onclick="window.location.href = 'statsE.php?idper=' +<?php echo $etudiants['idper']?>;">modifier</button>
+                    <button type="button" onclick="window.location.href = 'statsP.php?idper=' +<?php echo $pilotes['idper']?>;">modifier</button>
                 </div>
             <?php endforeach; ?>
         </section>

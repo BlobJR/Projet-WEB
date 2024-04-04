@@ -20,4 +20,19 @@ function getStatsEnt($pdo, $id_entreprise) {
 
     return $result;
 }
+function  supprimerEnt($pdo,$id_entreprise){
+    $query="DELETE FROM possede WHERE id_entreprise=:id_entreprise";
+    $stmt = $pdo->prepare($query);
+    $stmt->bindParam("id_entreprise", $id_entreprise);
+    $stmt->execute();
+    $query0 = 'DELETE FROM entreprises WHERE id_entreprise=:id_entreprise';
+    $stmt0 = $pdo->prepare($query0);
+    $stmt0->bindParam('id_entreprise', $id_entreprise);
+    $stmt0->execute();
+    
+    $query1="DELETE FROM offre_stage WHERE id_entreprise=:id_entreprise";
+    $stmt1 = $pdo->prepare($query1);
+    $stmt1->bindParam("id_entreprise", $id_entreprise);
+    $stmt1->execute();
+}
 ?>
