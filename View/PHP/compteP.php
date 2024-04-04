@@ -16,17 +16,17 @@ $idper=$_SESSION['idper'];
 <body>
   <header class="header1">
     <div class="header11">
-        <a href="https://www.youtube.com/watch?v=d_WjOBeLVn0&t=299s&ab_channel=EGO">
+        <a href="Connexion.php">
             <img src="../img/white_back_arrow_logo.png" alt="Logo">
         </a>
     </div>
     <div class="header12">
-        <a href="https://www.youtube.com/watch?v=d_WjOBeLVn0&t=299s&ab_channel=EGO">
+        <a href="accueil.php">
             <img src="../img/logopng.png" alt="Logo">
           </a>
       </div>
     <div class="header13">
-      <a href="https://www.youtube.com/watch?v=d_WjOBeLVn0&t=299s&ab_channel=EGO">
+      <a href="#">
         <img src="../img/compte.png" alt="Logo">
       </a>
 </div>
@@ -39,11 +39,11 @@ $idper=$_SESSION['idper'];
     <header class="header3">
       
       <button type="button" onclick="window.location.href = 'CréationEntreprise.php'">Créer une entreprise</button>
-      <button type="button">Gérer une entreprise</button>
+      <button type="button"onclick="window.location.href = 'rechercheEnt.php'">Gérer une entreprise</button>
       <button type="button"onclick="window.location.href = 'CréationOffre.php'">Créer une offre</button>
       <button type="button">Modifier une offre</button>
       <button type="button" onclick="window.location.href = 'Inscription.php'">Créer un compte étudiant</button>
-      <button type="button">Modifier un compte étudiant</button>  
+      <button type="button"onclick="window.location.href = 'rechercheE.php'">Modifier un compte étudiant</button>  
     </header>
 </body>
 </html> 

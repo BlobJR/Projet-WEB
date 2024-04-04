@@ -5,6 +5,7 @@ session_start();
 $promotions=promotion($pdo);
 $url=$_SESSION['url'];
 $idper=$_SESSION['idper'];
+$etudiant=insertE($pdo,$idper);
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["formValidated"]) && $_POST["formValidated"] == "1") {
     modification($pdo,$idper);
   }
@@ -30,10 +31,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["formValidated"]) && $_
     
     <header class="header2">
         <form method="POST" name="myForm" id="myForm" style="margin-top: 4vh;">
-            <input type="text" name="mail" placeholder="Votre Email" id="emailI" onblur="verifmail(this)">
-            <input type="password" name="mdp" placeholder="Votre Mot de Passe" id="mdpI">
-            <input type="text" name="nom" placeholder="Votre Nom" id="nomI">
-            <input type="text" name="prenom" placeholder="Votre Prenom" id="prenomI">
+            <input type="text" name="mail" placeholder="Votre Email" id="emailI" onblur="verifmail(this)" value="<?php echo $etudiant['email']?>">
+            <input type="password" name="mdp" placeholder="Votre Mot de Passe" id="mdpI" value="<?php echo $etudiant['mdp']?>">
+            <input type="text" name="nom" placeholder="Votre Nom" id="nomI" value="<?php echo $etudiant['nom']?>">
+            <input type="text" name="prenom" placeholder="Votre Prenom" id="prenomI" value="<?php echo $etudiant['prenom']?>">
             <input type="hidden" name="formValidated" id="formValidated" value="0">
             <select name="promotion" id="promotion" class="select">
                 <?php foreach ($promotions as $promo): ?>

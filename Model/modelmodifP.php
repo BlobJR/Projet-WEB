@@ -1,10 +1,18 @@
 <?php
+function insertP($pdo,$idper){
+     $query="SELECT nom,prenom,email,mdp FROM personne WHERE idper=:idper";
+     $stmt = $pdo->prepare($query);
+     $stmt->bindParam(":idper", $idper);
+     $stmt->execute();
+     $result=$stmt->fetch();
+     return $result;
+}
 function  getmodifP($pdo,$idper){
     $nom = !empty($_POST['nom']) ? $_POST['nom'] : null;
     $prenom = !empty($_POST['prenom']) ? $_POST['prenom'] : null;
     $mail = !empty($_POST['mail']) ? $_POST['mail'] : null;
     $mdp = !empty($_POST['mdp']) ? $_POST['mdp'] : null;
-    $query = "UPDATE personne SET ";
+    $query = "UPDATE personne JOIN pilote ON pilote.idper=personne.idper SET ";
     $setValues = [];
     if ($nom !== null){
          $setValues[] = "personne.nom = :nom";
@@ -13,7 +21,7 @@ function  getmodifP($pdo,$idper){
          $setValues[] = "personne.prenom = :prenom";
     }
     if ($mail !== null){
-        $setValues[] = "personne.mail = :mail";
+        $setValues[] = "personne.email = :mail";
     }
     if ($mdp !== null){ 
         $setValues[] = "personne.mdp = :mdp";

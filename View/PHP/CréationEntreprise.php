@@ -2,6 +2,7 @@
 require_once 'connexiondb.php';
 require_once '../../controller/controlcreaent.php';
 session_start();
+$url=$_SESSION['url'];
 if (isset($_SESSION['role'])) {
     $role = $_SESSION['role'];
     $idper=$_SESSION['idper'];
@@ -30,7 +31,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["formValidated"]) && $_
 
 <body>
     <header class="header1">
-        <a href="accueil.php">
+        <a href="<?php echo $url; ?>">
         <img src="../img/logopng.png" alt="Logo">
     </a>
     </header>

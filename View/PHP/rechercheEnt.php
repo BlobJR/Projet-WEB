@@ -3,6 +3,7 @@ require_once '../../controller/controlrechercheEnt.php';
 require_once 'connexiondb.php';
 session_start();
 $role=$_SESSION['role'];
+$url=$_SESSION['url'];
 if (isset($_GET['id_entreprise']) || isset($_GET['nom_ent']) || isset($_GET['ville']) || isset($_GET['secteur'])) {
     $id_entreprise = isset($_GET['id_entreprise']) ? $_GET['id_entreprise'] : null;
     $nom_ent = isset($_GET['nom_ent']) ? $_GET['nom_ent'] : null;

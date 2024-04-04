@@ -13,6 +13,13 @@ $_SESSION['role'] = $role;
 $_SESSION['idper'] = $idper; 
 $_SESSION['id_admin'] = $id_admin; 
 $_SESSION['id_pil'] = $id_pil;
+$role=$_SESSION['role'];
+if ($role === 'Admin') {
+    $url = 'compteA.php';
+} elseif ($role === 'pilote') {
+    $url = 'compteP.php';
+} 
+$_SESSION['url']=$url;
 }
 } 
 ?>

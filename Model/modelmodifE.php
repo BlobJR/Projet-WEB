@@ -55,6 +55,14 @@ function getmodif($pdo,$idper){
     $stmt1->execute();
 
 }
+function getE($pdo,$idper){
+    $query = "SELECT nom,prenom,email,mdp FROM personne WHERE idper=:idper";
+    $stmt = $pdo->prepare($query);
+    $stmt->bindParam(":idper", $idper);
+    $stmt->execute();
+    $result = $stmt->fetch();
+    return $result;
+}
 function getpromo($pdo){
     $query="SELECT nom_promo FROM promotions ";
     $stmt = $pdo->prepare($query);

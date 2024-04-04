@@ -11,13 +11,7 @@ if (isset($_GET['idper']) || isset($_GET['nom']) || isset($_GET['prenom']) || is
 } else {
     $etudiant = insertE($pdo);
 }
-$role=$_SESSION['role'];
-if ($role === 'Admin') {
-    $url = 'compteA.php';
-} elseif ($role === 'pilote') {
-    $url = 'compteP.php';
-} 
-$_SESSION['url']=$url;
+$url=$_SESSION['url'];
  
     
 

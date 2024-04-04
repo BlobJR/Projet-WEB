@@ -1,12 +1,13 @@
 <?php
 require_once '../../Model/modelacceuil.php';
 require_once 'connexiondb.php';
-
+session_start();
 $offres = getoff($pdo);
 $villes = getVille($pdo);
 $secteurs = getsecteurs($pdo);
 $comp_requises = getcomp($pdo);
 $entreprises = getNomEntreprises($pdo); 
+$url=$_SESSION['url'];
 ?>
 
 <!DOCTYPE html>
@@ -25,7 +26,7 @@ $entreprises = getNomEntreprises($pdo);
     <header class="header">        
 
         <div class="logo">
-            <a href="indexnv.html">
+            <a href="<?php echo $url; ?>">
                 <img src="../img/logopngcrop.png" alt="Logo">
             </a>
         </div>
@@ -78,7 +79,7 @@ $entreprises = getNomEntreprises($pdo);
         <section class="bottom">
             <?php foreach ($offres as $offre_stage): ?>
                 <div class="offre">
-                    <a href="offres.php?id=<?php echo $offre_stage['id_offre']; ?>" class="offre-link">
+                    <a href="accueil.php?id=<?php echo $offre_stage['id_offre']; ?>" class="offre-link">
                         <div class="midle_content">
                             <h1 class="intitule"><?php echo $offre_stage['intitule']; ?></h1>
                             <p class="info">Nom de l'entreprise : <span class="nom_ent"><?php echo $entreprise ?></span></p>
