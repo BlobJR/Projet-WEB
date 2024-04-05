@@ -8,16 +8,20 @@ $role = $result['role'];
 $idper = $result['idper'];
 $id_admin=$result['id_admin'];
 $id_pil=$result['id_pil'];
+$id_etudiant=$result['id_etudiant'];
 session_start();
 $_SESSION['role'] = $role; 
 $_SESSION['idper'] = $idper; 
 $_SESSION['id_admin'] = $id_admin; 
 $_SESSION['id_pil'] = $id_pil;
+$_SESSION['id_etudiant'] = $id_etudiant;
 $role=$_SESSION['role'];
 if ($role === 'Admin') {
     $url = 'compteA.php';
 } elseif ($role === 'pilote') {
     $url = 'compteP.php';
+} elseif ($role === 'Etudiant') {
+    $url = 'compteE.php';
 } 
 $_SESSION['url']=$url;
 }

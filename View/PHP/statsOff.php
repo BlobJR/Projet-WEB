@@ -1,20 +1,13 @@
 <?php
 require_once'connexiondb.php';
 session_start();
-$idper=$_SESSION['idper'];
-echo $idper;
 $url=$_SESSION['url'];
-require_once'../../Controller/controlstatsE.php';
-$statsE=statsE($pdo,$idper);
-$nom=$statsE['nom'];
-$prenom=$statsE['prenom'];
-$email=$statsE['email'];
-$statsP=statsP($pdo,$idper);
-$nom_promo=$statsP['nom_promo'];
-$niveau_diplome=$statsP['niveau_diplome'];
+$id_offre=$_SESSION['id_offre'];
+require_once'../../Controller/controlstatsOff.php';
+$statsoff=statsoff($pdo,$id_offre);
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["Supprimer"]) && $_POST["Supprimer"] == "1") {
  
-  supprimer($pdo,$idper);
+  supprimer($pdo,$id_offre);
 }
 
 ?>
@@ -27,40 +20,42 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["Supprimer"]) && $_POST
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600&display=swap">
     <title>Statistiques</title>
     <link rel="icon" href="../img/capsule_w.png" type="image/x-icon">
-    <script src="../js/statsE.js"></script>
+    <script src="../js/statsOff.js"></script>
 </head>
 
 <body>
   <header class="header1">
     <div class="header11">
-        <a href="<?php echo $url; ?>">
+        <a href="rechercheP.php">
             <img src="../img/white_back_arrow_logo.png" alt="Logo">
         </a>
     </div>
     <div class="header12">
-        <a href="<?php echo $url; ?>">
+        <a href="accueil.php">
             <img src="../img/logopng.png" alt="Logo">
           </a>
     </div>
     <div class="header13">
-      <a href="<?php echo $url; ?>">
+      <a href="compteA.php">
         <img src="../img/compte.png" alt="Logo">
       </a>
     </div>
   </header>
     <header class="header2">
       <form method="POST" id="MS">
-        <img src="../img/2354573.png" alt="Logo">
+        <img src="../img/6416420.png" alt="Logo">
       
-        <p><?php echo $nom," ",$prenom?></p>
+        <p><?php echo str_replace('?', 'é', $statsoff['intitule']);?></p>
         <input type="hidden" name="Supprimer" id="Supprimer"value="0">
       </form>
     </header>
     <header class="header3">
-    <p>Adresse mail renseignée</p>
-    <span><?php echo $email ?></span>
-      <p>Promotions actuellement occupée </p>
-      <span><?php echo $nom_promo," ", "Niveau: ",$niveau_diplome?></span>
+    <p>Ville</p>
+    <span><?php echo $statsoff['nom_ville'] ?></span>
+    <p>Informations</p>
+    <span> Entreprise: <?php echo $statsoff['nom_ent']; ?></span><br>
+    <span> Secteur: <?php echo $statsoff['nom_secteur']; ?></span><br>
+    <span> Compétences requises: <?php echo $statsoff['comp_requises']; ?></span><br>
       <button onclick="validM()">Modifier le compte</button>
       <br>
       <button onclick="validS()">Supprimer le compte</button>

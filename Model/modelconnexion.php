@@ -24,4 +24,12 @@ function getpil($pdo,$idper){
     return $result['id_pil'];
     
 }
+function getE($pdo,$idper){
+    $stmt = $pdo->prepare('SELECT id_etudiant FROM etudiant WHERE idper = :idper');
+    $stmt->bindParam(':idper', $idper);
+    $stmt->execute();
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+    return $result['id_etudiant'];
+    
+}
 ?>

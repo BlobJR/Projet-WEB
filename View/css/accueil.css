@@ -71,7 +71,13 @@ body{
   width: 99%;
   border-radius: 35px;
 }
-
+.top h1{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 4vw;
+  font-size: 5vw;
+}
 .search {
   display: flex;
   justify-content: center;

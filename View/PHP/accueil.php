@@ -2,8 +2,35 @@
 require_once '../../controller/controlaccueil.php';
 require_once 'connexiondb.php';
 session_start();
-$offres=insertoff($pdo);
 $url=$_SESSION['url'];
+$role=$_SESSION['role'];
+if($role="Etudiant"){
+    $id_etudiant=$_SESSION['id_etudiant'];
+}
+if (isset($_POST['ville']) || isset($_POST['secteur']) || isset($_POST['competences']) || isset($_POST['entreprises']) || isset($_POST['id_offre'])|| isset($_POST['query'])) {
+    $id_offre = isset($_POST['id_offre']) ? $_POST['id_offre'] : null;
+    $ville = isset($_POST['ville']) ? $_POST['ville'] : null;
+    $secteur = isset($_POST['secteur']) ? $_POST['secteur'] : null;
+    $competences = isset($_POST['competences']) ? $_POST['competences'] : null;
+    $entreprises = isset($_POST['entreprises']) ? $_POST['entreprises'] : null;
+    $query=isset($_POST['query']) ? $_POST['query'] : null;
+    $_SESSION['nom_ent'] = $entreprises;
+    $_SESSION['ville'] = $ville;
+    $_SESSION['nom_secteur'] = $secteur;
+    $_SESSION['comp_requises'] = $competences;
+    $_SESSION['id_offre'] = $id_offre;
+    $offres = insertoffR($pdo, $ville, $entreprises, $secteur, $id_offre,$competences,$query); 
+    }else {
+        $offres=insertoff($pdo);
+    }
+if(isset($_POST['modifierBtn']) && isset($_POST['id_offre'])) {
+        $_SESSION['id_offre'] = $_POST['id_offre'];
+        header("Location: statsOff.php");
+}
+if(isset($_POST['ajouterBtn']) && isset($_POST['id_offre'])) {
+    $id_offre=$_POST['id_offre'];
+    ajouterW($pdo,$id_offre,$id_etudiant);
+}
 ?>
 
 <!DOCTYPE html>
@@ -27,7 +54,7 @@ $url=$_SESSION['url'];
             </a>
         </div>
         <div class="account">
-            <a class="account" href="dashboard.html">COMPTE</a>
+            <a class="account" href="<?php echo $url; ?>">COMPTE</a>
         </div>
 
     </header>
@@ -35,15 +62,9 @@ $url=$_SESSION['url'];
     <section class="container">
 
         <section class="top"> 
-        <section class="criteres">
-            <div class="search">
-                <form action="recherche.php" method="GET" class="search-bar">
-                    <input placeholder="Recherche"  type="text" name="query"/>
-                </form>
-            </div>
-            </section>
+        
             <div class="menus"> <!-- Menus déroulants -->
-                <form action="recherche.php" method="GET">
+                <form action="accueil.php" method="POST">
                     <select id="ville" name="ville">
                         <option value="">Ville</option>
                         <?php 
@@ -74,6 +95,7 @@ $url=$_SESSION['url'];
                             <option value="<?php echo $offre_stage['nom_ent']; ?>"><?php echo $offre_stage['nom_ent']; ?></option>
                         <?php endforeach; ?>
                     </select>
+                    <input type="submit" value="Rechercher" style="margin-left:4vw;border-radius:4vw;height:5vh;padding:1%;cursor:pointer;">
                 </form>
             </div>
         </section>
@@ -81,16 +103,29 @@ $url=$_SESSION['url'];
         <section class="bottom">
             <?php foreach ($offres as $offre_stage): ?>
                 <div class="offre">
-                    <a href="accueil.php?id=<?php echo $offre_stage['id_offre']; ?>" class="offre-link">
+                    <a href="offres.php?kw=<?php echo $offre_stage['id_offre']; ?>" class="offre-link">
                         <div class="midle_content">
-                            <h1 class="intitule"><?php echo $offre_stage['intitule']; ?></h1>
+                            <h1 class="intitule"><?php echo str_replace('?', 'é', $offre_stage['intitule']); ?></h1>
                             <p class="info">Nom de l'entreprise : <span class="nom_ent"><?php echo $offre_stage['nom_ent'] ?></span></p>
                             <p class="info">Niveau requis du poste : <span class="niveau_requis"><?php echo $offre_stage['niveau_requis']; ?></span></p>
                             <p class="info">Secteur du poste : <span class="secteur"><?php echo $offre_stage['nom_secteur']; ?></span></p>
                             <p class="info">Nombres de places du poste : <span class="nbr_places"><?php echo $offre_stage['nbr_places']; ?></span></p>
                             <p class="info">Compétences requises du poste : <span class="comp_requises"><?php echo $offre_stage['comp_requises']; ?></span></p>
                         </div>
+                        
                     </a>
+                    <?php if ($role !== 'Etudiant'): ?>
+                        <form method="POST">
+                            <input type="hidden" name="id_offre" value="<?php echo $offre_stage['id_offre']; ?>">
+                            <button type="submit" name="modifierBtn">modifier</button>
+                        </form>
+                    <?php endif; ?>
+                    <?php if ($role == 'Etudiant'): ?>
+                        <form method="POST">
+                            <input type="hidden" name="id_offre" value="<?php echo $offre_stage['id_offre']; ?>">
+                            <button type="submit" name="ajouterBtn">Ajouter a la Wishlist</button>
+                        </form>
+                    <?php endif; ?>
                 </div>
             <?php endforeach; ?>
         </section>

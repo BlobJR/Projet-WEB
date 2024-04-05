@@ -17,7 +17,8 @@ try {
                         'id_admin' => $id_admin,
                         'role' => $role,
                         'idper' => $idper,
-                        'id_pil'=>"NULL"
+                        'id_pil'=>"NULL",
+                        'id_etudiant'=>"NULL"
                         );
                         return $result;
                        
@@ -25,11 +26,13 @@ try {
                        
                    case "Etudiant":
                        header("Location:compteE.php");
+                       $id_etudiant=getE($pdo,$idper);
                        $result = array(
                         'id_admin' => "NULL",
                         'role' => $role,
                         'idper' => $idper,
-                        'id_pil'=>"NULL"
+                        'id_pil'=>"NULL",
+                        'id_etudiant'=>$id_etudiant
                         );
                         return $result;
                        exit();
@@ -41,7 +44,8 @@ try {
                         'id_pil' => $id_pil,
                         'role' => $role,
                         'idper' => $idper,
-                        'id_admin'=>"NULL"
+                        'id_admin'=>"NULL",
+                        'id_etudiant'=>"NULL"
                         );
                         return $result;
                        exit();

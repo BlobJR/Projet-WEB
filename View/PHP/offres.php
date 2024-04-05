@@ -1,34 +1,10 @@
 <?php
 require_once 'connexiondb.php';
+require_once '../../Controller/controlOff.php';
+$id_offre = $_GET['kw'];
 
-// Vérifier si l'identifiant de l'offre est présent dans l'URL
-if(isset($_GET['id'])) {
-    // Récupérer l'identifiant de l'offre depuis l'URL
-    $offre_id = $_GET['id'];
+$offre=insertOff($pdo,$id_offre)
 
-    try {
-        // Requête pour récupérer les détails de l'offre avec l'identifiant spécifié
-        $sql = "SELECT * FROM offre_stage WHERE id_offre = :offre_id";
-        $stmt = $pdo->prepare($sql);
-        $stmt->bindParam(':offre_id', $offre_id);
-        $stmt->execute();
-
-        // Vérifier si l'offre existe
-        if ($stmt->rowCount() > 0) {
-            // Afficher les détails de l'offre
-            $offre = $stmt->fetch(PDO::FETCH_ASSOC);
-        } else {
-            // Si aucune offre ne correspond à l'identifiant spécifié, afficher un message d'erreur
-            echo "Aucune offre correspondant à cet identifiant n'a été trouvée.";
-        }
-    } catch (PDOException $e) {
-        // En cas d'erreur lors de l'exécution de la requête SQL, afficher l'erreur
-        echo "Erreur : " . $e->getMessage();
-    }
-} else {
-    // Si aucun identifiant d'offre n'est présent dans l'URL, afficher un message d'erreur ou rediriger l'utilisateur
-    echo "Aucun identifiant d'offre spécifié.";
-}
 ?>
 
 <!DOCTYPE html>
@@ -56,12 +32,10 @@ if(isset($_GET['id'])) {
 
     <section class="offre">
         <section class="left">
-            <h2 class="intitule"><?php echo isset($offre['intitule']) ? $offre['intitule'] : ''; ?></h2>
-            <span class="ID"><?php echo isset($offre['id_offre']) ? $offre['id_offre'] : ''; ?></span>
-            <span class="niveau_requis"><?php echo isset($offre['niveau_requis']) ? $offre['niveau_requis'] : ''; ?></span>
-            <span class="domaine"><?php echo isset($offre['domaine']) ? $offre['domaine'] : ''; ?></span>
-            <span class="nbr_places"><?php echo isset($offre['nbr_places']) ? $offre['nbr_places'] : ''; ?></span>
-            <span class="comp_requises"><?php echo isset($offre['comp_requises']) ? $offre['comp_requises'] : ''; ?></span>
+            <h2 class="intitule"> <?php echo  str_replace('?', 'é', $offre['intitule']); ?></h2>
+            <span class="nbr_places">Nombres de Places: <?php  echo  str_replace('?', 'é', $offre['nbr_places']);  ?></span>
+            <span class="niveau_requis">Niveau Requis: <?php echo  str_replace('?', 'é', $offre['niveau_requis']);  ?></span>
+            <span class="comp_requises">Compétences: <?php  echo  str_replace('?', 'é', $offre['comp_requises']);  ?></span>
         </section>
         <section class="right">
             <label for="cv-upload" class="custom-file-upload">
